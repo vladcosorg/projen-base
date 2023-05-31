@@ -1,37 +1,17 @@
-import { cdk, javascript, JsonPatch } from 'projen'
+import { cdk } from 'projen'
+
+import { applyProjectChanges, getSharedOptions } from './src/shared'
 
 const project = new cdk.JsiiProject({
+  ...getSharedOptions(),
   author: 'Vlad Cos',
   authorAddress: 'vcosvic@gmail.com',
   defaultReleaseBranch: 'main',
   jsiiVersion: '~5.0.0',
-  name: 'jsiproj',
-  packageName: 'loll',
-  packageManager: javascript.NodePackageManager.NPM,
-  projenrcTs: true,
-  repositoryUrl: 'https://github.com/vcosvic/jsiproj.git',
+  name: 'projen-base',
+  repositoryUrl: 'https://github.com/chetzof/projen-base',
   peerDeps: ['projen'],
   deps: ['projen'],
-  docgen: false,
-  eslint: true,
-  jest: false,
-  githubOptions: { mergify: false, pullRequestLint: false },
-  codeCov: false,
-  vscode: false,
-  buildWorkflow: false,
-  prettier: false,
-  pullRequestTemplate: false,
-  projenrcTsOptions: { swc: true },
-  devDeps: ['chetzof-lint-config', 'prettier'],
-  // eslintOptions: {},
 })
-project.eslint.addExtends('./node_modules/chetzof-lint-config/eslint/index.js')
-project.gitignore.exclude('/.idea')
-project
-  .tryFindObjectFile('.eslintrc.json')
-  .patch(JsonPatch.replace('/rules', {}))
-project.package.addField(
-  'prettier',
-  'chetzof-lint-config/prettier/.prettierrc.js',
-)
+applyProjectChanges(project)
 project.synth()

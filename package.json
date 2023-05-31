@@ -1,8 +1,8 @@
 {
-  "name": "loll",
+  "name": "projen-base",
   "repository": {
     "type": "git",
-    "url": "https://github.com/vcosvic/jsiproj.git"
+    "url": "https://github.com/chetzof/projen-base"
   },
   "scripts": {
     "build": "npx projen build",
@@ -36,7 +36,7 @@
     "@types/node": "^16",
     "@typescript-eslint/eslint-plugin": "^5",
     "@typescript-eslint/parser": "^5",
-    "chetzof-lint-config": "^1.2.1",
+    "chetzof-lint-config": "^1.2.5",
     "eslint": "^8",
     "eslint-import-resolver-node": "^0.3.7",
     "eslint-import-resolver-typescript": "^3.5.5",
@@ -46,16 +46,16 @@
     "jsii-pacmak": "^1.82.0",
     "npm-check-updates": "^16",
     "prettier": "^2.8.8",
-    "projen": "^0.71.76",
+    "projen": "^0.71.80",
     "standard-version": "^9",
     "ts-node": "^10.9.1",
     "typescript": "^5.0.4"
   },
   "peerDependencies": {
-    "projen": "^0.71.76"
+    "projen": "^0.71.80"
   },
   "dependencies": {
-    "projen": "^0.71.76"
+    "projen": "^0.71.80"
   },
   "main": "lib/index.js",
   "license": "Apache-2.0",
