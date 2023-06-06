@@ -1,4 +1,5 @@
 import { cdk } from 'projen'
+import { NpmAccess } from 'projen/lib/javascript'
 
 import { applyProjectChanges, getSharedOptions } from './src/shared'
 
@@ -8,6 +9,7 @@ const project = new cdk.JsiiProject({
   authorAddress: 'vcosvic@gmail.com',
   defaultReleaseBranch: 'main',
   jsiiVersion: '~5.0.0',
+  npmAccess: NpmAccess.PUBLIC,
   name: '@chetzof/projen-base',
   repositoryUrl: 'https://github.com/chetzof/projen-base',
   peerDeps: ['projen'],
