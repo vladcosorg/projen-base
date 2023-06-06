@@ -1,5 +1,4 @@
-import { cdk, github } from 'projen'
-import { NpmAccess } from 'projen/lib/javascript'
+import { cdk } from 'projen'
 
 import { applyProjectChanges, getSharedOptions } from './src/shared'
 
@@ -7,14 +6,7 @@ const project = new cdk.JsiiProject({
   ...getSharedOptions(),
   author: 'Vlad Cos',
   authorAddress: 'vcosvic@gmail.com',
-  defaultReleaseBranch: 'main',
   jsiiVersion: '~5.0.0',
-  npmAccess: NpmAccess.PUBLIC,
-  autoApproveUpgrades: true,
-  autoApproveOptions: {
-    allowedUsernames: ['myappchetzof[bot]'],
-  },
-  projenCredentials: github.GithubCredentials.fromApp(),
   name: '@chetzof/projen-base',
   repositoryUrl: 'https://github.com/chetzof/projen-base',
   peerDeps: ['projen'],

@@ -1,8 +1,9 @@
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 import path = require('node:path')
 
-import { javascript, JsonPatch } from 'projen'
+import { github, javascript, JsonPatch } from 'projen'
 import { PROJEN_DIR } from 'projen/lib/common'
+import { NpmAccess } from 'projen/lib/javascript'
 
 import type { JsiiProject } from 'projen/lib/cdk'
 import type {
@@ -13,6 +14,12 @@ import type {
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export function getSharedOptions() {
   return {
+    projenCredentials: github.GithubCredentials.fromApp(),
+    npmAccess: NpmAccess.PUBLIC,
+    autoApproveUpgrades: true,
+    autoApproveOptions: {
+      allowedUsernames: ['myappchetzof[bot]'],
+    },
     defaultReleaseBranch: 'main',
     packageManager: javascript.NodePackageManager.NPM,
     projenrcTs: true,
