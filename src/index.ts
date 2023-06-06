@@ -8,7 +8,7 @@ import { applyProjectChanges, getSharedOptions } from './shared'
 
 import type { GitHubActionTypeScriptOptions } from 'projen-github-action-typescript'
 
-export class ProjenBase extends typescript.TypeScriptProject {
+export class CustomTypescriptProject extends typescript.TypeScriptProject {
   constructor(options: typescript.TypeScriptProjectOptions) {
     options = {
       ...getSharedOptions(),
@@ -22,12 +22,10 @@ export class ProjenBase extends typescript.TypeScriptProject {
 export class LightNodeProject extends javascript.NodeProject {
   constructor(options: javascript.NodeProjectOptions) {
     super({
-      packageManager: javascript.NodePackageManager.NPM,
+      ...getSharedOptions(),
       jest: false,
-      githubOptions: { mergify: false, pullRequestLint: false },
       codeCov: false,
       vscode: false,
-      buildWorkflow: false,
       prettier: true,
       pullRequestTemplate: false,
       ...options,
@@ -53,7 +51,7 @@ export class GithubAction extends GitHubActionTypeScriptProject {
   }
 }
 
-export class Monorepo extends ProjenBase {
+export class Monorepo extends CustomTypescriptProject {
   constructor(options: typescript.TypeScriptProjectOptions) {
     super({
       sampleCode: false,
@@ -69,7 +67,7 @@ export class Monorepo extends ProjenBase {
   }
 }
 
-export class MonorepoPackage extends ProjenBase {
+export class MonorepoPackage extends CustomTypescriptProject {
   constructor(options: typescript.TypeScriptProjectOptions) {
     super({
       sampleCode: true,
