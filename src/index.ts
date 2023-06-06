@@ -1,10 +1,10 @@
 import * as path from 'node:path'
 
-import { javascript, typescript } from 'projen'
+import { typescript } from 'projen'
 import { GitHubActionTypeScriptProject } from 'projen-github-action-typescript'
 
 import { ScriptFile } from './script-file'
-import { applyProjectChanges, getSharedOptions } from './shared'
+import { applyProjectChanges, getSharedOptions, postSynthesize } from './shared'
 
 import type { GitHubActionTypeScriptOptions } from 'projen-github-action-typescript'
 
@@ -17,26 +17,10 @@ export class CustomTypescriptProject extends typescript.TypeScriptProject {
     super(options)
     applyProjectChanges(this)
   }
-}
 
-export class LightNodeProject extends javascript.NodeProject {
-  constructor(options: javascript.NodeProjectOptions) {
-    super({
-      ...getSharedOptions(),
-      jest: false,
-      codeCov: false,
-      vscode: false,
-      prettier: true,
-      pullRequestTemplate: false,
-      ...options,
-    })
-
-    // project.tsconfigDev.add
-    this.gitignore.exclude('/.idea')
-    // this.package.addField(
-    //   'prettier',
-    //   '@chetzof/.prettierrc.js',
-    // )
+  postSynthesize() {
+    super.postSynthesize()
+    postSynthesize(this)
   }
 }
 
