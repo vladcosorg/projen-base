@@ -8,10 +8,11 @@ const project = new cdk.JsiiProject({
   authorAddress: 'vcosvic@gmail.com',
   defaultReleaseBranch: 'main',
   jsiiVersion: '~5.0.0',
-  name: 'projen-base',
+  name: '@chetzof/projen-base',
   repositoryUrl: 'https://github.com/chetzof/projen-base',
   peerDeps: ['projen'],
-  deps: ['projen'],
+  deps: ['projen', 'projen-github-action-typescript'],
 })
+project.testTask.reset()
 applyProjectChanges(project)
 project.synth()

@@ -1,5 +1,5 @@
 {
-  "name": "projen-base",
+  "name": "@chetzof/projen-base",
   "repository": {
     "type": "git",
     "url": "https://github.com/chetzof/projen-base"
@@ -55,7 +55,8 @@
     "projen": "^0.71.80"
   },
   "dependencies": {
-    "projen": "^0.71.80"
+    "projen": "^0.71.80",
+    "projen-github-action-typescript": "^0.0.302"
   },
   "main": "lib/index.js",
   "license": "Apache-2.0",

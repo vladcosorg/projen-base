@@ -204,12 +204,7 @@
     },
     "test": {
       "name": "test",
-      "description": "Run tests",
-      "steps": [
-        {
-          "spawn": "eslint"
-        }
-      ]
+      "description": "Run tests"
     },
     "unbump": {
       "name": "unbump",
