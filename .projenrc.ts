@@ -11,7 +11,9 @@ const project = new cdk.JsiiProject({
   jsiiVersion: '~5.0.0',
   npmAccess: NpmAccess.PUBLIC,
   autoApproveUpgrades: true,
-  autoApproveOptions: {},
+  autoApproveOptions: {
+    allowedUsernames: ['myappchetzof'],
+  },
   projenCredentials: github.GithubCredentials.fromApp(),
   name: '@chetzof/projen-base',
   repositoryUrl: 'https://github.com/chetzof/projen-base',
