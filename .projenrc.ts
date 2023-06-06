@@ -1,4 +1,4 @@
-import { cdk } from 'projen'
+import { cdk, github } from 'projen'
 import { NpmAccess } from 'projen/lib/javascript'
 
 import { applyProjectChanges, getSharedOptions } from './src/shared'
@@ -10,6 +10,9 @@ const project = new cdk.JsiiProject({
   defaultReleaseBranch: 'main',
   jsiiVersion: '~5.0.0',
   npmAccess: NpmAccess.PUBLIC,
+  autoApproveUpgrades: true,
+  autoApproveOptions: {},
+  projenCredentials: github.GithubCredentials.fromApp(),
   name: '@chetzof/projen-base',
   repositoryUrl: 'https://github.com/chetzof/projen-base',
   peerDeps: ['projen'],
