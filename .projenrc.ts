@@ -12,7 +12,7 @@ const project = new cdk.JsiiProject({
   npmAccess: NpmAccess.PUBLIC,
   autoApproveUpgrades: true,
   autoApproveOptions: {
-    allowedUsernames: ['myappchetzof'],
+    allowedUsernames: ['myappchetzof[bot]'],
   },
   projenCredentials: github.GithubCredentials.fromApp(),
   name: '@chetzof/projen-base',
