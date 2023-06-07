@@ -49,6 +49,7 @@ export function applyProjectChanges(
   project.tryRemoveFile('.prettierrc.json')
   project.prettier?.addIgnorePattern('lib')
   project.prettier?.addIgnorePattern('dist')
+  project.prettier?.addIgnorePattern('.projen')
 }
 
 export function postSynthesize(project: JsiiProject | TypeScriptProject): void {
