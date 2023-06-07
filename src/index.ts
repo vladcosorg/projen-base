@@ -4,7 +4,7 @@ import { typescript } from 'projen'
 import { GitHubActionTypeScriptProject } from 'projen-github-action-typescript'
 
 import { ScriptFile } from './script-file'
-import { applyProjectChanges, getSharedOptions, postSynthesize } from './shared'
+import { preSynthesize, getSharedOptions, postSynthesize } from './shared'
 
 import type { GitHubActionTypeScriptOptions } from 'projen-github-action-typescript'
 
@@ -15,7 +15,7 @@ export class CustomTypescriptProject extends typescript.TypeScriptProject {
       ...options,
     }
     super(options)
-    applyProjectChanges(this)
+    preSynthesize(this)
   }
 
   postSynthesize() {
@@ -31,7 +31,7 @@ export class GithubAction extends GitHubActionTypeScriptProject {
       ...options,
     }
     super(options)
-    applyProjectChanges(this)
+    preSynthesize(this)
   }
 }
 

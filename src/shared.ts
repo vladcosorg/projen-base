@@ -38,9 +38,7 @@ export function getSharedOptions() {
   } satisfies Partial<TypeScriptProjectOptions>
 }
 
-export function applyProjectChanges(
-  project: JsiiProject | TypeScriptProject,
-): void {
+export function preSynthesize(project: JsiiProject | TypeScriptProject): void {
   project.addDevDeps('chetzof-lint-config', '@chetzof/prettier-config')
 
   // project.tsconfigDev.add

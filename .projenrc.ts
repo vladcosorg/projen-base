@@ -1,11 +1,7 @@
 import { cdk } from 'projen'
 
 import { RootProject } from './src/root-project'
-import {
-  applyProjectChanges,
-  getSharedOptions,
-  postSynthesize,
-} from './src/shared'
+import { preSynthesize, getSharedOptions, postSynthesize } from './src/shared'
 
 const project = new RootProject({
   ...getSharedOptions(),
@@ -18,6 +14,6 @@ const project = new RootProject({
   deps: ['projen', 'projen-github-action-typescript'],
 })
 project.testTask.reset()
-applyProjectChanges(project)
+preSynthesize(project)
 project.synth()
 postSynthesize(project)
