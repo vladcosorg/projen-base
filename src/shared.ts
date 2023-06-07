@@ -40,6 +40,8 @@ export function getSharedOptions() {
 export function preSynthesize(project: JsiiProject | TypeScriptProject): void {
   project.testTask.reset()
 
+  project.deps.removeDependency(project.name)
+
   if (project.prettier) {
     project.addDevDeps('chetzof-lint-config', '@chetzof/prettier-config')
     project.package.addField('prettier', '@chetzof/prettier-config')
