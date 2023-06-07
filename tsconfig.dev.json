@@ -8,10 +8,9 @@
     "inlineSourceMap": true,
     "inlineSources": true,
     "lib": [
-      "esnext",
-      "dom"
+      "es2019"
     ],
-    "module": "commonjs",
+    "module": "CommonJS",
     "noEmitOnError": false,
     "noFallthroughCasesInSwitch": true,
     "noImplicitAny": true,
@@ -24,32 +23,7 @@
     "strictNullChecks": true,
     "strictPropertyInitialization": true,
     "stripInternal": true,
-    "target": "es2022",
-    "isolatedModules": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "moduleResolution": "node",
-    "allowUnusedLabels": false,
-    "allowUnreachableCode": false,
-    "exactOptionalPropertyTypes": true,
-    "noImplicitOverride": true,
-    "noPropertyAccessFromIndexSignature": true,
-    "noUncheckedIndexedAccess": true,
-    "allowJs": true,
-    "checkJs": true,
-    "useDefineForClassFields": true,
-    "noEmit": false,
-    "downlevelIteration": true,
-    "paths": {
-      "@/*": [
-        "./*"
-      ]
-    },
-    "composite": true,
-    "emitDeclarationOnly": true,
-    "incremental": true,
-    "baseUrl": "./",
-    "outDir": ".projen/cache/types"
+    "target": "ES2019"
   },
   "include": [
     ".projenrc.js",

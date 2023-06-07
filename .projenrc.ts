@@ -1,8 +1,13 @@
 import { cdk } from 'projen'
 
-import { applyProjectChanges, getSharedOptions } from './src/shared'
+import { RootProject } from './src/root-project'
+import {
+  applyProjectChanges,
+  getSharedOptions,
+  postSynthesize,
+} from './src/shared'
 
-const project = new cdk.JsiiProject({
+const project = new RootProject({
   ...getSharedOptions(),
   author: 'Vlad Cos',
   authorAddress: 'vcosvic@gmail.com',
@@ -15,3 +20,4 @@ const project = new cdk.JsiiProject({
 project.testTask.reset()
 applyProjectChanges(project)
 project.synth()
+postSynthesize(project)
