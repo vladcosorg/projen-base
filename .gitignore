@@ -37,6 +37,8 @@ jspm_packages/
 !/.github/workflows/release.yml
 !/.mergify.yml
 !/.github/workflows/upgrade-main.yml
+!/.prettierignore
+!/.prettierrc.json
 !/.npmrc
 !/test/
 !/tsconfig.dev.json
