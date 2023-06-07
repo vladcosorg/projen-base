@@ -41,7 +41,6 @@ export function getSharedOptions() {
 export function applyProjectChanges(
   project: JsiiProject | TypeScriptProject,
 ): void {
-  project.addPeerDeps('prettier')
   project.addDevDeps('chetzof-lint-config', '@chetzof/prettier-config')
 
   // project.tsconfigDev.add
