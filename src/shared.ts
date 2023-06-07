@@ -11,7 +11,6 @@ import type {
   TypeScriptProjectOptions,
 } from 'projen/lib/typescript'
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export function getSharedOptions() {
   return {
     projenCredentials: github.GithubCredentials.fromApp(),
