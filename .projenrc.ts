@@ -13,7 +13,5 @@ const project = new RootProject({
   peerDeps: ['projen'],
   deps: ['projen', 'projen-github-action-typescript'],
 })
-project.testTask.reset()
-preSynthesize(project)
+
 project.synth()
-postSynthesize(project)

@@ -39,30 +39,49 @@ export function getSharedOptions() {
 }
 
 export function preSynthesize(project: JsiiProject | TypeScriptProject): void {
-  project.addDevDeps('chetzof-lint-config', '@chetzof/prettier-config')
+  project.testTask.reset()
 
-  // project.tsconfigDev.add
+  if (project.prettier) {
+    project.addDevDeps('chetzof-lint-config', '@chetzof/prettier-config')
+    project.package.addField('prettier', '@chetzof/prettier-config')
+    project.tryRemoveFile('.prettierrc.json')
+  }
+
+  if (project.eslint) {
+    project
+      .tryFindObjectFile('.eslintrc.json')
+      ?.patch(JsonPatch.replace('/rules', {}))
+  }
+
+  if (project.prettier && project.eslint) {
+    project.deps.removeDependency('eslint-plugin-prettier')
+    // @ts-ignore
+    project.eslint._plugins = project.eslint._plugins.filter(
+      (item: string) => item !== 'prettier',
+    )
+    // @ts-ignore
+    project.eslint._extends = project.eslint._extends.filter(
+      (item: string) =>
+        item !== 'prettier' && item !== 'plugin:prettier/recommended',
+    )
+    project
+      .tryFindObjectFile('.eslintrc.json')
+      ?.patch(JsonPatch.remove('/plugins/prettier'))
+  }
+
   project.gitignore.exclude('/.idea')
-  project.package.addField('prettier', '@chetzof/prettier-config')
-  project.tryRemoveFile('.prettierrc.json')
+
   project.prettier?.addIgnorePattern('lib')
   project.prettier?.addIgnorePattern('dist')
   project.prettier?.addIgnorePattern('.projen')
 }
 
 export function postSynthesize(project: JsiiProject | TypeScriptProject): void {
-  project
-    .tryFindObjectFile('.prettierrc.json')
-    ?.patch(JsonPatch.replace('/', { hi: true }))
-
   const originalConfig = require('chetzof-lint-config/tsconfig/tsconfig.json')
   project.eslint?.addExtends(
     './node_modules/chetzof-lint-config/eslint/index.js',
   )
 
-  project
-    .tryFindObjectFile('.eslintrc.json')
-    ?.patch(JsonPatch.replace('/rules', {}))
   // project.tryFindObjectFile(project.tsconfigDev.fileName)?.patch(
   //   JsonPatch.replace('/compilerOptions', {
   //     baseUrl: './',
