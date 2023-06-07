@@ -15,7 +15,8 @@
     "project": "./tsconfig.dev.json"
   },
   "extends": [
-    "plugin:import/typescript"
+    "plugin:import/typescript",
+    "@vladcos/eslint-config"
   ],
   "settings": {
     "import/parsers": {

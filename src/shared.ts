@@ -2,10 +2,10 @@
 import path = require('node:path')
 
 import { github, javascript, JsonPatch } from 'projen'
-import type { JsiiProject } from 'projen/lib/cdk'
 import { PROJEN_DIR } from 'projen/lib/common'
 import { NpmAccess } from 'projen/lib/javascript'
 
+import type { JsiiProject } from 'projen/lib/cdk'
 import type {
   TypeScriptProject,
   TypeScriptProjectOptions,
@@ -47,6 +47,8 @@ export function preSynthesize(project: JsiiProject | TypeScriptProject): void {
   }
 
   if (project.eslint) {
+    project.addDevDeps('@vladcos/eslint-config')
+    project.eslint.addExtends('@vladcos/eslint-config')
     project
       .tryFindObjectFile('.eslintrc.json')
       ?.patch(JsonPatch.replace('/rules', {}))
@@ -54,11 +56,13 @@ export function preSynthesize(project: JsiiProject | TypeScriptProject): void {
 
   if (project.prettier && project.eslint) {
     project.deps.removeDependency('eslint-plugin-prettier')
-    // @ts-ignore
+    // @ts-expect-error
     project.eslint._plugins = project.eslint._plugins.filter(
       (item: string) => item !== 'prettier',
     )
-    // @ts-ignore
+
+    // @ts-expect-error ddd
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access
     project.eslint._extends = project.eslint._extends.filter(
       (item: string) =>
         item !== 'prettier' && item !== 'plugin:prettier/recommended',

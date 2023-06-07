@@ -24,6 +24,10 @@
       "type": "build"
     },
     {
+      "name": "@vladcos/eslint-config",
+      "type": "build"
+    },
+    {
       "name": "chetzof-lint-config",
       "type": "build"
     },

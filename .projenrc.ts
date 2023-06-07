@@ -1,7 +1,5 @@
-import { cdk } from 'projen'
-
 import { RootProject } from './src/root-project'
-import { preSynthesize, getSharedOptions, postSynthesize } from './src/shared'
+import { getSharedOptions } from './src/shared'
 
 const project = new RootProject({
   ...getSharedOptions(),
