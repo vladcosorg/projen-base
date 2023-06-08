@@ -88,8 +88,10 @@ export function preSynthesize(
 }
 
 export function postSynthesize(project: JsiiProject | TypeScriptProject): void {
-  const originalConfig = require(project.tsconfigTemplatePath ??
-    '@vladcos/tsconfig')
+  const originalConfig =
+    'tsconfigTemplatePath' in project
+      ? require(project.tsconfigTemplatePath as string)
+      : require('@vladcos/tsconfig')
   const tsConfigFile = project.tryFindObjectFile(project.tsconfigDev.fileName)
   // project.tryFindObjectFile(project.tsconfigDev.fileName)?.patch(
   //   JsonPatch.replace('/compilerOptions', {
