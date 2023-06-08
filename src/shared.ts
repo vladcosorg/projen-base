@@ -43,8 +43,8 @@ export function preSynthesize(project: JsiiProject | TypeScriptProject): void {
   project.addDevDeps('@vladcos/tsconfig')
 
   if (project.prettier) {
-    project.addDevDeps('@chetzof/prettier-config')
-    project.package.addField('prettier', '@chetzof/prettier-config')
+    project.addDevDeps('@vladcos/prettier-config')
+    project.package.addField('prettier', '@vladcos/prettier-config')
     project.tryRemoveFile('.prettierrc.json')
   }
 
