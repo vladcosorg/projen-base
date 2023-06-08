@@ -5,11 +5,16 @@ import { github, javascript, JsonPatch } from 'projen'
 import { PROJEN_DIR } from 'projen/lib/common'
 import { NpmAccess } from 'projen/lib/javascript'
 
+import type { CustomTypescriptProject } from './index'
 import type { JsiiProject } from 'projen/lib/cdk'
 import type {
   TypeScriptProject,
   TypeScriptProjectOptions,
 } from 'projen/lib/typescript'
+
+export interface CustomTypescriptProjectOptions {
+  tsconfigTemplatePath?: string
+}
 
 export function getSharedOptions() {
   return {
@@ -37,7 +42,9 @@ export function getSharedOptions() {
   } satisfies Partial<TypeScriptProjectOptions>
 }
 
-export function preSynthesize(project: JsiiProject | TypeScriptProject): void {
+export function preSynthesize(
+  project: CustomTypescriptProject | JsiiProject,
+): void {
   project.testTask.reset()
 
   project.addDevDeps('@vladcos/tsconfig')
@@ -81,7 +88,8 @@ export function preSynthesize(project: JsiiProject | TypeScriptProject): void {
 }
 
 export function postSynthesize(project: JsiiProject | TypeScriptProject): void {
-  const originalConfig = require('@vladcos/tsconfig')
+  const originalConfig = require(project.tsconfigTemplatePath ??
+    '@vladcos/tsconfig')
   const tsConfigFile = project.tryFindObjectFile(project.tsconfigDev.fileName)
   // project.tryFindObjectFile(project.tsconfigDev.fileName)?.patch(
   //   JsonPatch.replace('/compilerOptions', {

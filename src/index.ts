@@ -6,15 +6,23 @@ import { GitHubActionTypeScriptProject } from 'projen-github-action-typescript'
 import { ScriptFile } from './script-file'
 import { preSynthesize, getSharedOptions, postSynthesize } from './shared'
 
+import type { CustomTypescriptProjectOptions } from './shared'
 import type { GitHubActionTypeScriptOptions } from 'projen-github-action-typescript'
 
 export class CustomTypescriptProject extends typescript.TypeScriptProject {
-  constructor(options: typescript.TypeScriptProjectOptions) {
+  public readonly tsconfigTemplatePath?: string
+  constructor(
+    options: CustomTypescriptProjectOptions &
+      typescript.TypeScriptProjectOptions,
+  ) {
     options = {
       ...getSharedOptions(),
       ...options,
     }
     super(options)
+
+    this.tsconfigTemplatePath = options.tsconfigTemplatePath
+
     preSynthesize(this)
   }
 
