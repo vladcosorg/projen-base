@@ -6,14 +6,16 @@ import { PROJEN_DIR } from 'projen/lib/common'
 import { NpmAccess } from 'projen/lib/javascript'
 
 import type { CustomTypescriptProject } from './index'
+import type { typescript } from 'projen'
 import type { JsiiProject } from 'projen/lib/cdk'
 import type {
   TypeScriptProject,
   TypeScriptProjectOptions,
 } from 'projen/lib/typescript'
 
-export interface CustomTypescriptProjectOptions {
-  tsconfigTemplatePath?: string
+export interface CustomTypescriptProjectOptions
+  extends typescript.TypeScriptProjectOptions {
+  readonly tsconfigTemplatePath?: string
 }
 
 export function getSharedOptions() {
