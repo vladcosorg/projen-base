@@ -82,6 +82,7 @@ export function preSynthesize(project: JsiiProject | TypeScriptProject): void {
 
 export function postSynthesize(project: JsiiProject | TypeScriptProject): void {
   const originalConfig = require('@vladcos/tsconfig')
+  const tsConfigFile = project.tryFindObjectFile(project.tsconfigDev.fileName)
   // project.tryFindObjectFile(project.tsconfigDev.fileName)?.patch(
   //   JsonPatch.replace('/compilerOptions', {
   //     baseUrl: './',
@@ -107,7 +108,7 @@ export function postSynthesize(project: JsiiProject | TypeScriptProject): void {
       JsonPatch.replace(`/compilerOptions/${optionName}`, optionsValue),
     )
   }
-  project.tryFindObjectFile(project.tsconfigDev.fileName)?.patch(...patches)
+  tsConfigFile?.patch(...patches)
 
   if (project.parent) {
     ;(project.parent as TypeScriptProject).tsconfigDev.file.addToArray(
@@ -116,4 +117,6 @@ export function postSynthesize(project: JsiiProject | TypeScriptProject): void {
     )
     project.parent.synth()
   }
+
+  tsConfigFile?.synthesize()
 }

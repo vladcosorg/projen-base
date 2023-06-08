@@ -6,7 +6,7 @@ const project = new RootProject({
   author: 'Vlad Cos',
   authorAddress: 'vcosvic@gmail.com',
   jsiiVersion: '~5.0.0',
-  name: '@chetzof/projen-base',
+  name: '@vladcos/projen-base',
   repositoryUrl: 'https://github.com/chetzof/projen-base',
   peerDeps: ['projen'],
   deps: ['projen', 'projen-github-action-typescript'],
