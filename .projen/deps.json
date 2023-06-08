@@ -28,7 +28,7 @@
       "type": "build"
     },
     {
-      "name": "chetzof-lint-config",
+      "name": "@vladcos/tsconfig",
       "type": "build"
     },
     {

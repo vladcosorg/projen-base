@@ -40,10 +40,10 @@ export function getSharedOptions() {
 export function preSynthesize(project: JsiiProject | TypeScriptProject): void {
   project.testTask.reset()
 
-  project.deps.removeDependency(project.name)
+  project.addDevDeps('@vladcos/tsconfig')
 
   if (project.prettier) {
-    project.addDevDeps('chetzof-lint-config', '@chetzof/prettier-config')
+    project.addDevDeps('@chetzof/prettier-config')
     project.package.addField('prettier', '@chetzof/prettier-config')
     project.tryRemoveFile('.prettierrc.json')
   }
@@ -69,9 +69,6 @@ export function preSynthesize(project: JsiiProject | TypeScriptProject): void {
       (item: string) =>
         item !== 'prettier' && item !== 'plugin:prettier/recommended',
     )
-    project
-      .tryFindObjectFile('.eslintrc.json')
-      ?.patch(JsonPatch.remove('/plugins/prettier'))
   }
 
   project.gitignore.exclude('/.idea')
@@ -79,14 +76,12 @@ export function preSynthesize(project: JsiiProject | TypeScriptProject): void {
   project.prettier?.addIgnorePattern('lib')
   project.prettier?.addIgnorePattern('dist')
   project.prettier?.addIgnorePattern('.projen')
+
+  project.deps.removeDependency(project.name)
 }
 
 export function postSynthesize(project: JsiiProject | TypeScriptProject): void {
-  const originalConfig = require('chetzof-lint-config/tsconfig/tsconfig.json')
-  project.eslint?.addExtends(
-    './node_modules/chetzof-lint-config/eslint/index.js',
-  )
-
+  const originalConfig = require('@vladcos/tsconfig')
   // project.tryFindObjectFile(project.tsconfigDev.fileName)?.patch(
   //   JsonPatch.replace('/compilerOptions', {
   //     baseUrl: './',
