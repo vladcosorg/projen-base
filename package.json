@@ -36,9 +36,9 @@
     "@types/node": "^16",
     "@typescript-eslint/eslint-plugin": "^5",
     "@typescript-eslint/parser": "^5",
-    "@vladcos/eslint-config": "^0.0.3",
-    "@vladcos/prettier-config": "^0.0.7",
-    "@vladcos/tsconfig": "^0.0.0",
+    "@vladcos/eslint-config": "^0.0.4",
+    "@vladcos/prettier-config": "^0.0.8",
+    "@vladcos/tsconfig": "^0.0.1",
     "eslint": "^8",
     "eslint-config-prettier": "^8.8.0",
     "eslint-import-resolver-node": "^0.3.7",
@@ -59,7 +59,7 @@
   },
   "dependencies": {
     "projen": "^0.71.87",
-    "projen-github-action-typescript": "^0.0.310"
+    "projen-github-action-typescript": "^0.0.311"
   },
   "main": "lib/index.js",
   "license": "Apache-2.0",
