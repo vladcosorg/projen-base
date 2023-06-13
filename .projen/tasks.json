@@ -87,7 +87,7 @@
       "description": "Only compile",
       "steps": [
         {
-          "exec": "packemon build --loadConfigs --no-addFiles --no-addExports"
+          "exec": "jsii --silence-warnings=reserved-word"
         }
       ]
     },

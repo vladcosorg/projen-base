@@ -76,9 +76,12 @@ export function preSynthesize(project: JsiiProject | TypeScriptProject): void {
     format: 'lib',
     platform: 'node',
   })
-  project.compileTask.reset(
-    'packemon build --loadConfigs --no-addFiles --no-addExports',
-  )
+
+  if (project.name !== '@vladcos/projen-base') {
+    project.compileTask.reset(
+      'packemon build --loadConfigs --no-addFiles --no-addExports',
+    )
+  }
 
   new ScriptFile(project, './packemon.config.ts', {
     templatePath: path.resolve(
