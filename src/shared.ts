@@ -73,7 +73,7 @@ export function preSynthesize(project: JsiiProject | TypeScriptProject): void {
     'tsx',
   )
 
-  project.defaultTask?.reset(`tsx .projenrc.ts`)
+  project.defaultTask?.reset(`npx -y tsx .projenrc.ts`)
   project.package.addField('packemon', {
     format: 'lib',
     platform: 'node',

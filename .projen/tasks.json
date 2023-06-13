@@ -96,7 +96,7 @@
       "description": "Synthesize project files",
       "steps": [
         {
-          "exec": "tsx .projenrc.ts"
+          "exec": "npx -y tsx .projenrc.ts"
         }
       ]
     },

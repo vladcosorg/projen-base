@@ -95,10 +95,6 @@
       "type": "build"
     },
     {
-      "name": "rollup-plugin-inline-js",
-      "type": "build"
-    },
-    {
       "name": "standard-version",
       "version": "^9",
       "type": "build"
