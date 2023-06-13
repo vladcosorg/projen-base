@@ -43,7 +43,6 @@ export class GithubAction extends TypeScriptProject {
     this.addDevDeps('@vercel/ncc')
     this.packageTask.reset('ncc build --source-map --license licenses.txt')
 
-    this.package.addField('main', 'lib/index.js')
     this.addGitIgnore('!/dist/')
     this.annotateGenerated('/dist/**')
 
