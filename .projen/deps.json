@@ -1,6 +1,10 @@
 {
   "dependencies": [
     {
+      "name": "@bleed-believer/path-alias",
+      "type": "build"
+    },
+    {
       "name": "@swc/core",
       "type": "build"
     },
@@ -29,6 +33,14 @@
     },
     {
       "name": "@vladcos/tsconfig",
+      "type": "build"
+    },
+    {
+      "name": "alias-hq",
+      "type": "build"
+    },
+    {
+      "name": "babel-plugin-module-resolver",
       "type": "build"
     },
     {
@@ -71,11 +83,19 @@
       "type": "build"
     },
     {
+      "name": "packemon",
+      "type": "build"
+    },
+    {
       "name": "prettier",
       "type": "build"
     },
     {
       "name": "projen",
+      "type": "build"
+    },
+    {
+      "name": "rollup-plugin-inline-js",
       "type": "build"
     },
     {
@@ -88,8 +108,32 @@
       "type": "build"
     },
     {
+      "name": "tsconfig-paths",
+      "type": "build"
+    },
+    {
+      "name": "tsx",
+      "type": "build"
+    },
+    {
       "name": "typescript",
       "type": "build"
+    },
+    {
+      "name": "@types/lodash",
+      "type": "bundled"
+    },
+    {
+      "name": "lodash",
+      "type": "bundled"
+    },
+    {
+      "name": "zod",
+      "type": "bundled"
+    },
+    {
+      "name": "zod-to-json-schema",
+      "type": "bundled"
     },
     {
       "name": "projen",
@@ -97,10 +141,6 @@
     },
     {
       "name": "projen",
-      "type": "runtime"
-    },
-    {
-      "name": "projen-github-action-typescript",
       "type": "runtime"
     }
   ],

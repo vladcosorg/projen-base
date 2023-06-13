@@ -1,15 +1,3 @@
-import { RootProject } from './src/root-project'
-import { getSharedOptions } from './src/shared'
+import { RootProject } from './src/projects/root'
 
-const project = new RootProject({
-  ...getSharedOptions(),
-  author: 'Vlad Cos',
-  authorAddress: 'vcosvic@gmail.com',
-  jsiiVersion: '~5.0.0',
-  name: '@vladcos/projen-base',
-  repositoryUrl: 'https://github.com/chetzof/projen-base',
-  peerDeps: ['projen'],
-  deps: ['projen', 'projen-github-action-typescript'],
-})
-
-project.synth()
+new RootProject().synth()

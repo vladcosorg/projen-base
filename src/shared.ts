@@ -1,24 +1,26 @@
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-import path = require('node:path')
 
+import * as path from 'node:path'
+
+import { omit } from 'lodash'
 import { github, javascript, JsonPatch } from 'projen'
 import { PROJEN_DIR } from 'projen/lib/common'
 import { NpmAccess } from 'projen/lib/javascript'
+import { mergeTsconfigOptions } from 'projen/lib/typescript'
+import { execOrUndefined } from 'projen/lib/util'
 
-import type { CustomTypescriptProject } from './index'
-import type { typescript } from 'projen'
-import type { JsiiProject } from 'projen/lib/cdk'
+import { ScriptFile } from './script-file'
+
 import type {
   TypeScriptProject,
   TypeScriptProjectOptions,
-} from 'projen/lib/typescript'
+} from './projects/typescript'
+import type { TSConfigStructure } from 'packemon'
+import type { JsiiProject, JsiiProjectOptions } from 'projen/lib/cdk'
 
-export interface CustomTypescriptProjectOptions
-  extends typescript.TypeScriptProjectOptions {
-  readonly tsconfigTemplatePath?: string
-}
-
-export function getSharedOptions() {
+export function getSharedOptions<
+  T extends JsiiProjectOptions | TypeScriptProjectOptions,
+>(options: T): T {
   return {
     projenCredentials: github.GithubCredentials.fromApp(),
     npmAccess: NpmAccess.PUBLIC,
@@ -41,15 +43,52 @@ export function getSharedOptions() {
     prettier: true,
     pullRequestTemplate: false,
     projenrcTsOptions: { swc: true },
-  } satisfies Partial<TypeScriptProjectOptions>
+    disableTsconfig: true,
+    tsconfigDevFile: 'tsconfig.json',
+    tsconfigDev: mergeTsconfigOptions(
+      JSON.parse(
+        execOrUndefined(
+          'curl https://raw.githubusercontent.com/vladcosorg/tsconfig/main/src/tsconfig.json',
+          { cwd: '.' },
+        ),
+      ),
+      options.tsconfigDev ?? { compilerOptions: {} },
+    ),
+    ...omit(options, 'tsconfigDev'),
+  } satisfies Partial<TypeScriptProjectOptions> as T
 }
 
-export function preSynthesize(
-  project: CustomTypescriptProject | JsiiProject,
-): void {
+export function preSynthesize(project: JsiiProject | TypeScriptProject): void {
   project.testTask.reset()
 
+  project.npmrc.addConfig('install-links', 'false')
   project.addDevDeps('@vladcos/tsconfig')
+
+  project.package.addDevDeps(
+    'packemon',
+    'alias-hq',
+    'babel-plugin-module-resolver',
+    'tsconfig-paths',
+    '@bleed-believer/path-alias',
+    'tsx',
+  )
+
+  project.defaultTask?.reset(`tsx .projenrc.ts`)
+  project.package.addField('packemon', {
+    format: 'lib',
+    platform: 'node',
+  })
+  project.compileTask.reset(
+    'packemon build --loadConfigs --no-addFiles --no-addExports',
+  )
+
+  new ScriptFile(project, './packemon.config.ts', {
+    templatePath: path.resolve(
+      path.join(__dirname, '../templates/packemon.config.ts'),
+    ),
+    readonly: true,
+    marker: true,
+  })
 
   if (project.prettier) {
     project.addDevDeps('@vladcos/prettier-config')
@@ -90,11 +129,16 @@ export function preSynthesize(
 }
 
 export function postSynthesize(project: JsiiProject | TypeScriptProject): void {
+  return
+  const defaultConfig: TSConfigStructure = $inline(
+    '../node_modules/@vladcos/tsconfig/lib/tsconfig.json',
+  )
   const originalConfig =
-    'tsconfigTemplatePath' in project
-      ? require(project.tsconfigTemplatePath as string)
+    'tsconfigTemplatePath' in project && project.tsconfigTemplatePath
+      ? require(project.tsconfigTemplatePath)
       : require('@vladcos/tsconfig')
   const tsConfigFile = project.tryFindObjectFile(project.tsconfigDev.fileName)
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-call
   // project.tryFindObjectFile(project.tsconfigDev.fileName)?.patch(
   //   JsonPatch.replace('/compilerOptions', {
   //     baseUrl: './',
@@ -118,6 +162,7 @@ export function postSynthesize(project: JsiiProject | TypeScriptProject): void {
   })) {
     patches.push(
       JsonPatch.replace(`/compilerOptions/${optionName}`, optionsValue),
+      JsonPatch.replace('/ts-node', originalConfig['ts-node']),
     )
   }
   tsConfigFile?.patch(...patches)

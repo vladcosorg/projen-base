@@ -87,7 +87,7 @@
       "description": "Only compile",
       "steps": [
         {
-          "exec": "jsii --silence-warnings=reserved-word"
+          "exec": "packemon build --loadConfigs --no-addFiles --no-addExports"
         }
       ]
     },
@@ -96,7 +96,7 @@
       "description": "Synthesize project files",
       "steps": [
         {
-          "exec": "ts-node --swc --project tsconfig.dev.json .projenrc.ts"
+          "exec": "tsx .projenrc.ts"
         }
       ]
     },
