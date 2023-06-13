@@ -4,7 +4,6 @@ import * as path from 'node:path'
 
 import { omit } from 'lodash'
 import { github, javascript, JsonPatch } from 'projen'
-import { PROJEN_DIR } from 'projen/lib/common'
 import { NpmAccess } from 'projen/lib/javascript'
 import { mergeTsconfigOptions } from 'projen/lib/typescript'
 import { execOrUndefined } from 'projen/lib/util'
@@ -15,12 +14,11 @@ import type {
   TypeScriptProject,
   TypeScriptProjectOptions,
 } from './projects/typescript'
-import type { TSConfigStructure } from 'packemon'
 import type { JsiiProject, JsiiProjectOptions } from 'projen/lib/cdk'
 
 export function getSharedOptions<
   T extends JsiiProjectOptions | TypeScriptProjectOptions,
->(options: T): T {
+>(options: Partial<T>): T {
   return {
     projenCredentials: github.GithubCredentials.fromApp(),
     npmAccess: NpmAccess.PUBLIC,
@@ -50,7 +48,7 @@ export function getSharedOptions<
         execOrUndefined(
           'curl https://raw.githubusercontent.com/vladcosorg/tsconfig/main/src/tsconfig.json',
           { cwd: '.' },
-        ),
+        )!,
       ),
       options.tsconfigDev ?? { compilerOptions: {} },
     ),
@@ -128,52 +126,6 @@ export function preSynthesize(project: JsiiProject | TypeScriptProject): void {
   project.deps.removeDependency(project.name)
 }
 
-export function postSynthesize(project: JsiiProject | TypeScriptProject): void {
-  return
-  const defaultConfig: TSConfigStructure = $inline(
-    '../node_modules/@vladcos/tsconfig/lib/tsconfig.json',
-  )
-  const originalConfig =
-    'tsconfigTemplatePath' in project && project.tsconfigTemplatePath
-      ? require(project.tsconfigTemplatePath)
-      : require('@vladcos/tsconfig')
-  const tsConfigFile = project.tryFindObjectFile(project.tsconfigDev.fileName)
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-  // project.tryFindObjectFile(project.tsconfigDev.fileName)?.patch(
-  //   JsonPatch.replace('/compilerOptions', {
-  //     baseUrl: './',
-  //     rootDir: 'src',
-  //     outDir: 'lib',
-  //   }),
-  // )
-
-  const patches: JsonPatch[] = []
-
-  for (const [optionName, optionsValue] of Object.entries({
-    ...originalConfig.compilerOptions,
-    composite: true,
-    emitDeclarationOnly: true,
-    incremental: true,
-    baseUrl: './',
-    outDir: path.relative(
-      project.outdir,
-      path.join(project.outdir, PROJEN_DIR, 'cache/types'),
-    ),
-  })) {
-    patches.push(
-      JsonPatch.replace(`/compilerOptions/${optionName}`, optionsValue),
-      JsonPatch.replace('/ts-node', originalConfig['ts-node']),
-    )
-  }
-  tsConfigFile?.patch(...patches)
-
-  if (project.parent) {
-    ;(project.parent as TypeScriptProject).tsconfigDev.file.addToArray(
-      'references',
-      { path: path.relative(project.parent.outdir, project.outdir) },
-    )
-    project.parent.synth()
-  }
-
-  tsConfigFile?.synthesize()
-}
+export function postSynthesize(
+  _project: JsiiProject | TypeScriptProject,
+): void {}
