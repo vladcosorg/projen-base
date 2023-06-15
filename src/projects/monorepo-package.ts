@@ -25,7 +25,7 @@ export class MonorepoPackage extends TypeScriptProject {
     })
     this.compileTask.reset('packemon build --loadConfigs')
     new ScriptFile(this, './packemon.config.ts', {
-      templatePath: resolve(join(__dirname, '../templates/packemon.config.ts')),
+      sourcePath: resolve(join(__dirname, '../templates/packemon.config.ts')),
       readonly: true,
       marker: true,
     })

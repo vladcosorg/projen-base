@@ -84,7 +84,7 @@ export function preSynthesize(project: JsiiProject | TypeScriptProject): void {
   }
 
   new ScriptFile(project, './packemon.config.ts', {
-    templatePath: path.resolve(
+    sourcePath: path.resolve(
       path.join(__dirname, '../templates/packemon.config.ts'),
     ),
     readonly: true,

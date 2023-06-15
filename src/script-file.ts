@@ -7,18 +7,18 @@ import type { FileBaseOptions, Project } from 'projen'
  * Options for `TextFile`.
  */
 export interface TextFileOptions extends FileBaseOptions {
-  readonly templatePath: string
+  readonly sourcePath: string
 }
 
 export class ScriptFile extends FileBase {
-  private readonly templatePath: string
+  private readonly sourcePath: string
   constructor(project: Project, filePath: string, options: TextFileOptions) {
     super(project, filePath, options)
-    this.templatePath = options.templatePath
+    this.sourcePath = options.sourcePath
   }
 
   protected synthesizeContent(): string {
-    return `// ${this.marker} \n ${fs.readFileSync(this.templatePath, {
+    return `// ${this.marker} \n ${fs.readFileSync(this.sourcePath, {
       encoding: 'utf8',
     })} 
     `

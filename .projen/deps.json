@@ -120,7 +120,15 @@
       "type": "bundled"
     },
     {
+      "name": "app-root-path",
+      "type": "bundled"
+    },
+    {
       "name": "lodash",
+      "type": "bundled"
+    },
+    {
+      "name": "vitest",
       "type": "bundled"
     },
     {
