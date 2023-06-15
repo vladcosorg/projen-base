@@ -6,7 +6,9 @@ import { ScriptFile } from '../script-file'
 import type { TypeScriptProject } from '../projects/typescript'
 import type { Project } from 'projen'
 
-export interface VitestOptions {}
+export interface VitestOptions {
+  readonly manualConfig?: boolean
+}
 export class Vitest extends Component {
   /**
    * Returns the singletone Jest component of a project or undefined if there is none.
@@ -23,11 +25,15 @@ export class Vitest extends Component {
 
     project.tsconfigDev.addInclude('vitest.config.ts')
     project.tsconfigDev.addInclude('tests/**/*.ts')
-    new ScriptFile(project, 'vitest.config.ts', {
-      sourcePath: resolve('templates/vitest.config.ts'),
-      readonly: true,
-      marker: true,
-    })
+
+    if (options.manualConfig) {
+      new ScriptFile(project, 'vitest.config.ts', {
+        sourcePath: resolve('templates/vitest.config.ts'),
+        readonly: true,
+        marker: true,
+      })
+    }
+
     new SampleDir(project, 'tests', {
       sourceDir: resolve('templates/tests'),
     })
