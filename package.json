@@ -65,14 +65,18 @@
   },
   "dependencies": {
     "@types/lodash": "^4.14.195",
+    "app-root-path": "^3.1.0",
     "lodash": "^4.17.21",
     "projen": "^0.71.96",
+    "vitest": "^0.32.0",
     "zod": "^3.21.4",
     "zod-to-json-schema": "^3.21.1"
   },
   "bundledDependencies": [
     "@types/lodash",
+    "app-root-path",
     "lodash",
+    "vitest",
     "zod",
     "zod-to-json-schema"
   ],
