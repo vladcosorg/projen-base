@@ -24,7 +24,7 @@ export class RootProject extends cdk.JsiiProject {
           'zod-to-json-schema',
           'zod',
           'app-root-path',
-          'vitest',
+          // 'vitest',
         ],
         peerDeps: ['projen'],
         deps: ['projen'],

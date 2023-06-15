@@ -128,10 +128,6 @@
       "type": "bundled"
     },
     {
-      "name": "vitest",
-      "type": "bundled"
-    },
-    {
       "name": "zod",
       "type": "bundled"
     },
