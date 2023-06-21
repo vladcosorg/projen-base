@@ -124,10 +124,6 @@
       "type": "bundled"
     },
     {
-      "name": "just-kebab-case",
-      "type": "bundled"
-    },
-    {
       "name": "lodash",
       "type": "bundled"
     },
