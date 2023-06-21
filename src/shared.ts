@@ -51,6 +51,7 @@ export function getSharedOptions<
           { cwd: '.' },
         )!,
       ),
+      { compilerOptions: { baseUrl: '.' } },
       options.tsconfigDev ?? { compilerOptions: {} },
     ),
     ...omit(options, 'tsconfigDev'),
@@ -72,7 +73,9 @@ export function preSynthesize(project: JsiiProject | TypeScriptProject): void {
     'tsx',
   )
 
-  project.defaultTask?.reset(`npx -y tsx .projenrc.ts`)
+  project.defaultTask?.reset(
+    `npx -y tsx -r tsconfig-paths/register .projenrc.ts`,
+  )
   project.package.addField('packemon', {
     format: 'lib',
     platform: 'node',
