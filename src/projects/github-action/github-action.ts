@@ -43,8 +43,19 @@ export class GithubAction extends TypeScriptProject {
     this.addDevDeps('@vercel/ncc')
     this.packageTask.reset('ncc build --source-map --license licenses.txt')
 
-    this.addGitIgnore('!/dist/')
+    this.package.addField('packemon', [
+      {
+        inputs: { index: 'src/index.ts' },
+        format: 'mjs',
+        platform: 'node',
+        support: 'current',
+      },
+    ])
+
+    this.addGitIgnore('/dist/')
     this.annotateGenerated('/dist/**')
+    this.addGitIgnore('/mjs')
+    this.annotateGenerated('/mjs/**')
 
     // Create metadata for projen managed `action.yml` file.
     const defaultMetadataOptions: GitHubActionTypeScriptOptions['actionMetadata'] =
@@ -77,6 +88,20 @@ export class GithubAction extends TypeScriptProject {
     this.addDeps('zod')
   }
 
+  preSynthesize() {
+    super.preSynthesize()
+    // console.log(
+    //   this.components.filter(
+    //     (comp) => comp instanceof FileBase && comp.readonly,
+    //   ),
+    // )
+    this.package.addField('packemon', {
+      format: 'mjs',
+      platform: 'node',
+      support: 'current',
+    })
+  }
+
   postSynthesize() {
     super.postSynthesize()
 
@@ -91,7 +116,7 @@ export class GithubAction extends TypeScriptProject {
       'inputs',
       Object.fromEntries(
         Object.keys(schema.properties).map<[string, Input]>((key) => [
-          key,
+          kebabCase(key),
           {
             description: schema.properties[key].description ?? 'No description',
             required: schema.required.includes(key),
@@ -102,4 +127,12 @@ export class GithubAction extends TypeScriptProject {
     )
     this.actionsFile.synthesize()
   }
+}
+
+function kebabCase(input: string) {
+  // eslint-disable-next-line unicorn/prefer-string-replace-all
+  return input.replace(
+    /[A-Z]+(?![a-z])|[A-Z]/g,
+    ($, ofs) => (ofs ? '-' : '') + $.toLowerCase(),
+  )
 }

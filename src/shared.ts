@@ -31,6 +31,7 @@ export function getSharedOptions<
     projenrcTs: true,
     docgen: false,
     eslint: true,
+    testdir: 'tests',
     releaseToNpm: true,
     mutableBuild: true,
     jest: false,
@@ -78,9 +79,7 @@ export function preSynthesize(project: JsiiProject | TypeScriptProject): void {
   })
 
   if (project.name !== '@vladcos/projen-base') {
-    project.compileTask.reset(
-      'packemon build --loadConfigs --no-addFiles --no-addExports',
-    )
+    project.compileTask.reset('packemon build --loadConfigs')
   }
 
   new ScriptFile(project, './packemon.config.ts', {
@@ -118,6 +117,12 @@ export function preSynthesize(project: JsiiProject | TypeScriptProject): void {
       (item: string) =>
         item !== 'prettier' && item !== 'plugin:prettier/recommended',
     )
+    // project.tasks.removeTask('eslint')
+    const task = project.tasks.addTask('format')
+    task.exec(
+      'prettier --write --cache --no-error-on-unmatched-pattern --ignore-unknown . || true',
+    )
+    task.spawn(project.eslint.eslintTask)
   }
 
   project.gitignore.exclude('/.idea')

@@ -26,7 +26,7 @@ export class Vitest extends Component {
     project.tsconfigDev.addInclude('vitest.config.ts')
     project.tsconfigDev.addInclude('tests/**/*.ts')
 
-    if (options.manualConfig) {
+    if (!options.manualConfig) {
       new ScriptFile(project, 'vitest.config.ts', {
         sourcePath: resolve('templates/vitest.config.ts'),
         readonly: true,
@@ -40,6 +40,14 @@ export class Vitest extends Component {
   }
   preSynthesize() {
     super.preSynthesize()
-    this.project.testTask.exec('vitest')
+    this.project.testTask.reset('vitest run', { receiveArgs: true })
+
+    const testWatch = this.project.tasks.tryFind('test:watch')
+    if (!testWatch) {
+      this.project.addTask('test:watch', {
+        description: 'Run vitest in watch mode',
+        exec: `vitest watch`,
+      })
+    }
   }
 }

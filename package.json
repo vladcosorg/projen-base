@@ -13,6 +13,7 @@
     "default": "npx projen default",
     "eject": "npx projen eject",
     "eslint": "npx projen eslint",
+    "format": "npx projen format",
     "package": "npx projen package",
     "package-all": "npx projen package-all",
     "package:js": "npx projen package:js",
@@ -66,6 +67,7 @@
   "dependencies": {
     "@types/lodash": "^4.14.195",
     "app-root-path": "^3.1.0",
+    "just-kebab-case": "^4.2.0",
     "lodash": "^4.17.21",
     "projen": "^0.71.103",
     "zod": "^3.21.4",
@@ -74,6 +76,7 @@
   "bundledDependencies": [
     "@types/lodash",
     "app-root-path",
+    "just-kebab-case",
     "lodash",
     "zod",
     "zod-to-json-schema"

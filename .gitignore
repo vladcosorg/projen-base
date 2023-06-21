@@ -40,7 +40,7 @@ jspm_packages/
 !/.prettierignore
 !/.prettierrc.json
 !/.npmrc
-!/test/
+!/tests/
 !/tsconfig.dev.json
 !/src/
 /lib

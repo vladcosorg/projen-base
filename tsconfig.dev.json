@@ -50,7 +50,7 @@
   "include": [
     ".projenrc.js",
     "src/**/*.ts",
-    "test/**/*.ts",
+    "tests/**/*.ts",
     "templates/**/*.ts",
     ".projenrc.ts",
     "projenrc/**/*.ts"

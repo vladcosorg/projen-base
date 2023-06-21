@@ -9,7 +9,8 @@ export { Vitest, VitestOptions } from '../components/vitest'
 export interface TypeScriptProjectOptions
   extends typescript.TypeScriptProjectOptions {
   readonly tsconfigTemplatePath?: string
-  readonly vitest?: VitestOptions
+  readonly vitest?: boolean
+  readonly vitestOptions?: VitestOptions
 }
 
 export class TypeScriptProject extends typescript.TypeScriptProject {
@@ -20,8 +21,8 @@ export class TypeScriptProject extends typescript.TypeScriptProject {
     super(getSharedOptions(options))
 
     this.tsconfigTemplatePath = options.tsconfigTemplatePath
-    if (options.vitest) {
-      this.vitest = new Vitest(this, options.vitest)
+    if (options.vitest ?? true) {
+      this.vitest = new Vitest(this, options.vitestOptions)
     }
   }
 
