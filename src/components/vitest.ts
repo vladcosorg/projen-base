@@ -32,7 +32,7 @@ export class Vitest extends Component {
     if (!options.manualConfig) {
       new ScriptFile(project, 'vitest.config.ts', {
         sourcePath: path.resolve(
-          join(__dirname, '../../templates/packemon.config.ts'),
+          join(__dirname, '../../templates/vitest.config.ts'),
         ),
         readonly: true,
         marker: true,
