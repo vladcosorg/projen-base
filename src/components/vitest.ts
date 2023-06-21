@@ -1,3 +1,5 @@
+import { join } from 'node:path'
+
 import { resolve } from 'app-root-path'
 import { Component, SampleDir } from 'projen'
 
@@ -28,7 +30,7 @@ export class Vitest extends Component {
 
     if (!options.manualConfig) {
       new ScriptFile(project, 'vitest.config.ts', {
-        sourcePath: resolve('templates/vitest.config.ts'),
+        sourcePath: resolve(join(__dirname, '../templates/packemon.config.ts')),
         readonly: true,
         marker: true,
       })
