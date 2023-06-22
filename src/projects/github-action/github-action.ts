@@ -29,7 +29,10 @@ export class GithubAction extends TypeScriptProject {
   readonly actionsFile: YamlFile
 
   constructor(options: GitHubActionTypeScriptOptions) {
-    super(options)
+    super({
+      ...options,
+      releaseToNpm: false,
+    })
 
     // standard GitHub action packages
     this.addDeps(
