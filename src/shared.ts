@@ -63,7 +63,6 @@ export function preSynthesize(project: JsiiProject | TypeScriptProject): void {
 
   project.npmrc.addConfig('install-links', 'false')
   project.addDevDeps('@vladcos/tsconfig')
-  project.package.addField('main', './lib/index.js')
   project.package.addDevDeps(
     'packemon',
     'alias-hq',
