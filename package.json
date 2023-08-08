@@ -55,7 +55,7 @@
     "npm-check-updates": "^16",
     "packemon": "^3.2.1",
     "prettier": "^2.8.8",
-    "projen": "^0.72.4",
+    "projen": "^0.72.5",
     "standard-version": "^9",
     "ts-node": "^10.9.1",
     "tsconfig-paths": "^3.14.2",
@@ -69,7 +69,7 @@
     "@types/lodash": "^4.14.196",
     "app-root-path": "^3.1.0",
     "lodash": "^4.17.21",
-    "projen": "^0.72.4",
+    "projen": "^0.72.5",
     "zod": "^3.21.4",
     "zod-to-json-schema": "^3.21.4"
   },
