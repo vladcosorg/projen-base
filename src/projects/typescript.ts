@@ -21,7 +21,7 @@ export class TypeScriptProject extends typescript.TypeScriptProject {
     super(getSharedOptions(options))
 
     this.tsconfigTemplatePath = options.tsconfigTemplatePath
-    if (options.vitest ?? true) {
+    if (options.vitest ?? false) {
       this.vitest = new Vitest(this, options.vitestOptions)
     }
   }
