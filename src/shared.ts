@@ -5,6 +5,7 @@ import * as path from 'node:path'
 import { omit } from 'lodash'
 import { github, javascript, JsonPatch } from 'projen'
 import { NpmAccess } from 'projen/lib/javascript'
+import { UpgradeDependenciesSchedule } from 'projen/lib/javascript/upgrade-dependencies'
 import { mergeTsconfigOptions } from 'projen/lib/typescript'
 import { execOrUndefined } from 'projen/lib/util'
 
@@ -44,6 +45,9 @@ export function getSharedOptions<
     projenrcTsOptions: { swc: true },
     disableTsconfig: true,
     tsconfigDevFile: 'tsconfig.json',
+    depsUpgradeOptions: {
+      workflowOptions: { schedule: UpgradeDependenciesSchedule.WEEKLY },
+    },
     tsconfigDev: mergeTsconfigOptions(
       JSON.parse(
         execOrUndefined(
