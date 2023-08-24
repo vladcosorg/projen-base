@@ -3,7 +3,7 @@ import { cdk } from 'projen'
 import { preSynthesize, postSynthesize, getSharedOptions } from '../shared'
 
 export class RootProject extends cdk.JsiiProject {
-  constructor() {
+  constructor(options: any = {}) {
     super(
       getSharedOptions({
         defaultReleaseBranch: 'main',
@@ -21,13 +21,12 @@ export class RootProject extends cdk.JsiiProject {
         bundledDeps: [
           'lodash',
           '@types/lodash',
-          'zod-to-json-schema',
-          'zod',
           'app-root-path',
           // 'vitest',
         ],
         peerDeps: ['projen'],
         deps: ['projen'],
+        ...options,
       }),
     )
   }

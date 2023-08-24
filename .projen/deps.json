@@ -133,14 +133,6 @@
       "type": "bundled"
     },
     {
-      "name": "zod",
-      "type": "bundled"
-    },
-    {
-      "name": "zod-to-json-schema",
-      "type": "bundled"
-    },
-    {
       "name": "projen",
       "type": "peer"
     },

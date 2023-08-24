@@ -84,7 +84,7 @@ export function preSynthesize(project: JsiiProject | TypeScriptProject): void {
     platform: 'node',
   })
 
-  if (project.name !== '@vladcos/projen-base') {
+  if (!project.name.startsWith('@vladcos/projen')) {
     project.compileTask.reset('packemon build --loadConfigs')
   }
 

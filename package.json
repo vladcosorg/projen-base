@@ -69,16 +69,12 @@
     "@types/lodash": "^4.14.197",
     "app-root-path": "^3.1.0",
     "lodash": "^4.17.21",
-    "projen": "^0.72.19",
-    "zod": "^3.22.2",
-    "zod-to-json-schema": "^3.21.4"
+    "projen": "^0.72.19"
   },
   "bundledDependencies": [
     "@types/lodash",
     "app-root-path",
-    "lodash",
-    "zod",
-    "zod-to-json-schema"
+    "lodash"
   ],
   "main": "lib/index.js",
   "license": "Apache-2.0",
