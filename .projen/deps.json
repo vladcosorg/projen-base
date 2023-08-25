@@ -133,6 +133,14 @@
       "type": "bundled"
     },
     {
+      "name": "replace-in-file",
+      "type": "bundled"
+    },
+    {
+      "name": "type-fest",
+      "type": "bundled"
+    },
+    {
       "name": "zod",
       "type": "bundled"
     },
@@ -146,6 +154,10 @@
     },
     {
       "name": "projen",
+      "type": "runtime"
+    },
+    {
+      "name": "replace-in-file",
       "type": "runtime"
     }
   ],

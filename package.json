@@ -70,6 +70,8 @@
     "app-root-path": "^3.1.0",
     "lodash": "^4.17.21",
     "projen": "^0.72.19",
+    "replace-in-file": "^7.0.1",
+    "type-fest": "^0.21.3",
     "zod": "^3.22.2",
     "zod-to-json-schema": "^3.21.4"
   },
@@ -77,6 +79,8 @@
     "@types/lodash",
     "app-root-path",
     "lodash",
+    "replace-in-file",
+    "type-fest",
     "zod",
     "zod-to-json-schema"
   ],

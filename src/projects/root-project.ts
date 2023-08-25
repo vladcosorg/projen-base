@@ -21,13 +21,15 @@ export class RootProject extends cdk.JsiiProject {
         bundledDeps: [
           'lodash',
           '@types/lodash',
+          'type-fest',
           'app-root-path',
           'zod-to-json-schema',
           'zod',
+          'replace-in-file',
           // 'vitest',
         ],
         peerDeps: ['projen'],
-        deps: ['projen'],
+        deps: ['projen', 'replace-in-file'],
         ...options,
       }),
     )

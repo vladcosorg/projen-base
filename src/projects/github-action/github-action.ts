@@ -1,6 +1,8 @@
 import { YamlFile } from 'projen'
+import { TypeScriptModuleResolution } from 'projen/lib/javascript'
 import { zodToJsonSchema } from 'zod-to-json-schema'
 
+import { InjectBuild } from './inject-build'
 import { RunsUsing } from './types/actions-metadata-model'
 
 import { TypeScriptProject } from '../typescript'
@@ -23,7 +25,6 @@ export interface GitHubActionTypeScriptOptions
    */
   readonly actionMetadata?: GitHubActionMetadata
 }
-
 export class GithubAction extends TypeScriptProject {
   readonly inputsPath?: string
   readonly actionsFile: YamlFile
@@ -32,6 +33,15 @@ export class GithubAction extends TypeScriptProject {
     super({
       ...options,
       releaseToNpm: false,
+      vitest: true,
+      defaultReleaseBranch: 'main',
+      tsconfigDev: {
+        compilerOptions: {
+          module: 'ES2022',
+          moduleResolution: TypeScriptModuleResolution.BUNDLER,
+        },
+      },
+      entrypoint: './mjs/index.mjs',
     })
 
     // standard GitHub action packages
@@ -43,8 +53,10 @@ export class GithubAction extends TypeScriptProject {
     )
 
     // package as a single runnable .js file in /dist
-    this.addDevDeps('@vercel/ncc')
+    this.addDevDeps('@vercel/ncc', 'tsconfig-paths')
     this.packageTask.reset('ncc build --source-map --license licenses.txt')
+    this.package.addField('type', 'module')
+    this.compileTask.reset('packemon build --loadConfigs --no-addFiles')
 
     this.package.addField('packemon', [
       {
@@ -103,6 +115,7 @@ export class GithubAction extends TypeScriptProject {
       platform: 'node',
       support: 'current',
     })
+    InjectBuild.preSynthesize(this)
   }
 
   postSynthesize() {
@@ -115,6 +128,7 @@ export class GithubAction extends TypeScriptProject {
       properties: Record<string, { default?: unknown; description?: string }>
       required: string[]
     }
+    InjectBuild.postSynthesize()
     this.actionsFile.addOverride(
       'inputs',
       Object.fromEntries(
