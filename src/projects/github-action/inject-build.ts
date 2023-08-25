@@ -1,7 +1,7 @@
 import { chmodSync } from 'node:fs'
 import { posix } from 'node:path'
 
-import replace from 'replace-in-file'
+import { replaceInFileSync } from 'replace-in-file'
 
 import type { GithubAction } from './github-action'
 
@@ -102,7 +102,7 @@ export const InjectBuild = {
 
   postSynthesize() {
     chmodSync(posix.resolve('.github/workflows/release.yml'), '666')
-    replace.replaceInFileSync({
+    replaceInFileSync({
       files: '.github/workflows/release.yml',
       from: '--target $GITHUB_REF',
       to: '--target ${{ steps.commit.outputs.commit_long_sha }}',
