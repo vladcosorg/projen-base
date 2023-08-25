@@ -22,6 +22,8 @@ export class RootProject extends cdk.JsiiProject {
           'lodash',
           '@types/lodash',
           'app-root-path',
+          'zod-to-json-schema',
+          'zod',
           // 'vitest',
         ],
         peerDeps: ['projen'],
