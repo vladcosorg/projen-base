@@ -17,7 +17,7 @@ export const InjectBuild = {
     )
 
     releaseWorkflowFile?.addOverride(
-      'jobs.release_github.steps.12.if',
+      'jobs.release_github.steps.13.if',
       `steps.commit.outputs.committed == 'true'`,
     )
 
