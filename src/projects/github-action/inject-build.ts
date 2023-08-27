@@ -79,6 +79,9 @@ export const InjectBuild = {
           run: 'cp ./main/action.yml action.yml',
         },
         {
+          run: 'cp ./main/README.md README.md',
+        },
+        {
           id: 'major',
           run: `echo "version=$(cut -d '.' -f 1 ${posix.join(
             project.artifactsDirectory,
