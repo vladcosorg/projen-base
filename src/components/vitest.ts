@@ -1,7 +1,6 @@
 import { join } from 'node:path'
 import path = require('node:path')
 
-import { resolve } from 'app-root-path'
 import { Component, SampleDir } from 'projen'
 
 import { ScriptFile } from '../script-file'
@@ -40,7 +39,7 @@ export class Vitest extends Component {
     }
 
     new SampleDir(project, 'tests', {
-      sourceDir: resolve('templates/tests'),
+      sourceDir: path.resolve(join(__dirname, '../../templates/tests')),
     })
   }
   preSynthesize() {
