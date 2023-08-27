@@ -65,7 +65,7 @@ export function getSharedOptions<
 export function preSynthesize(project: JsiiProject | TypeScriptProject): void {
   project.testTask.reset()
   const version = 'projen@0.72.19'
-  project.addDeps(version)
+  project.addDevDeps(version)
   project.addPeerDeps(version)
   project.npmrc.addConfig('install-links', 'false')
   project.addDevDeps('@vladcos/tsconfig')
