@@ -56,7 +56,6 @@ export class GithubAction extends TypeScriptProject {
     this.addDevDeps('@vercel/ncc', 'tsconfig-paths')
     this.packageTask.reset('ncc build --source-map --license licenses.txt')
     this.package.addField('type', 'module')
-    this.compileTask.reset('packemon build --loadConfigs --no-addFiles')
 
     this.package.addField('packemon', [
       {
@@ -115,6 +114,7 @@ export class GithubAction extends TypeScriptProject {
       platform: 'node',
       support: 'current',
     })
+    this.compileTask.reset('packemon build --loadConfigs --no-addFiles')
     InjectBuild.preSynthesize(this)
   }
 
