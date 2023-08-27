@@ -150,10 +150,12 @@
     },
     {
       "name": "projen",
+      "version": "0.72.19",
       "type": "peer"
     },
     {
       "name": "projen",
+      "version": "0.72.19",
       "type": "runtime"
     },
     {

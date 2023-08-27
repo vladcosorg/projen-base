@@ -1,10 +1,8 @@
 import { RootProject } from './root-project'
 
-import { getSharedOptions } from '../shared'
-
 export class CustomJsii extends RootProject {
   constructor(options: any = {}) {
-    super(getSharedOptions(options))
+    super(options)
     this.addDeps('@vladcos/projen-base')
     this.addPeerDeps('@vladcos/projen-base')
   }

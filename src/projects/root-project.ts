@@ -28,8 +28,7 @@ export class RootProject extends cdk.JsiiProject {
           'replace-in-file',
           // 'vitest',
         ],
-        peerDeps: ['projen'],
-        deps: ['projen', 'replace-in-file'],
+        deps: ['replace-in-file'],
         ...options,
       }),
     )
