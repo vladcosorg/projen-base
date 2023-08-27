@@ -69,19 +69,13 @@
     "@types/lodash": "^4.14.197",
     "app-root-path": "^3.1.0",
     "lodash": "^4.17.21",
-    "replace-in-file": "^7.0.1",
-    "type-fest": "^0.21.3",
-    "zod": "^3.22.2",
-    "zod-to-json-schema": "^3.21.4"
+    "type-fest": "^0.21.3"
   },
   "bundledDependencies": [
     "@types/lodash",
     "app-root-path",
     "lodash",
-    "replace-in-file",
-    "type-fest",
-    "zod",
-    "zod-to-json-schema"
+    "type-fest"
   ],
   "main": "lib/index.js",
   "license": "Apache-2.0",
