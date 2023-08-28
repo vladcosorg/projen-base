@@ -12,8 +12,11 @@ export class Monorepo extends TypeScriptProject {
     })
     this.package.addField('workspaces', ['./packages/*'])
     this.package.addField('private', true)
-    this.tsconfigDev.file.addDeletionOverride('include')
     this.tsconfigDev.file.addDeletionOverride('files')
     this.tsconfigDev.file.addDeletionOverride('exclude')
+    this.tsconfigDev.file.addOverride('include', [
+      '.projenrc.js',
+      '.projenrc.ts',
+    ])
   }
 }
