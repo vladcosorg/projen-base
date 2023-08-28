@@ -1,8 +1,4 @@
-import { join, resolve } from 'node:path'
-
 import { TypeScriptProject } from './typescript'
-
-import { ScriptFile } from '../script-file'
 
 import type { typescript } from 'projen'
 
@@ -24,10 +20,10 @@ export class MonorepoPackage extends TypeScriptProject {
       platform: 'node',
     })
     this.compileTask.reset('packemon build --loadConfigs')
-    new ScriptFile(this, './packemon.config.ts', {
-      sourcePath: resolve(join(__dirname, '../templates/packemon.config.ts')),
-      readonly: true,
-      marker: true,
-    })
+    // new ScriptFile(this, './packemon.config.ts', {
+    //   sourcePath: resolve(join(__dirname, '../templates/packemon.config.ts')),
+    //   readonly: true,
+    //   marker: true,
+    // })
   }
 }
