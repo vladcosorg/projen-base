@@ -11,11 +11,13 @@ export interface TypeScriptProjectOptions
   readonly tsconfigTemplatePath?: string
   readonly vitest?: boolean
   readonly vitestOptions?: VitestOptions
+  readonly packemon?: boolean
 }
 
 export class TypeScriptProject extends typescript.TypeScriptProject {
   public readonly tsconfigTemplatePath?: string
   public readonly vitest?: Vitest
+  public readonly packemon?: boolean
 
   constructor(options: TypeScriptProjectOptions) {
     super(getSharedOptions(options))
@@ -24,6 +26,7 @@ export class TypeScriptProject extends typescript.TypeScriptProject {
     if (options.vitest ?? false) {
       this.vitest = new Vitest(this, options.vitestOptions)
     }
+    this.packemon = options.packemon ?? true
   }
 
   preSynthesize() {
