@@ -16,7 +16,6 @@ import type {
   TypeScriptProjectOptions,
 } from './projects/typescript'
 import type { JsiiProject, JsiiProjectOptions } from 'projen/lib/cdk'
-import { DependencyType } from 'projen/lib/dependencies'
 
 export function getSharedOptions<
   T extends JsiiProjectOptions | TypeScriptProjectOptions,
