@@ -71,14 +71,12 @@ export function preSynthesize(project: JsiiProject | TypeScriptProject): void {
   }
 
   project.npmrc.addConfig('install-links', 'false')
-  project.addDevDeps('@vladcos/tsconfig')
+  project.addDevDeps('@vladcos/tsconfig@latest')
   project.package.addDevDeps(
-    'packemon',
-    'alias-hq',
-    'babel-plugin-module-resolver',
-    'tsconfig-paths',
-    '@bleed-believer/path-alias',
-    'tsx',
+    'packemon@3',
+    'alias-hq@6',
+    'tsconfig-paths@4',
+    'tsx@3',
   )
 
   project.defaultTask?.reset(
@@ -106,13 +104,13 @@ export function preSynthesize(project: JsiiProject | TypeScriptProject): void {
   })
 
   if (project.prettier) {
-    project.addDevDeps('@vladcos/prettier-config')
+    project.addDevDeps('@vladcos/prettier-config@latest')
     project.package.addField('prettier', '@vladcos/prettier-config')
     project.tryRemoveFile('.prettierrc.json')
   }
 
   if (project.eslint) {
-    project.addDevDeps('@vladcos/eslint-config')
+    project.addDevDeps('@vladcos/eslint-config@latest')
     project.eslint.addExtends('@vladcos/eslint-config')
     project
       .tryFindObjectFile('.eslintrc.json')
