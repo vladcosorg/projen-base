@@ -244,7 +244,7 @@
           "exec": "npm update npm-check-updates"
         },
         {
-          "exec": "npm-check-updates --upgrade --target=minor --filter=@bleed-believer/path-alias,@swc/core,@types/node,@typescript-eslint/eslint-plugin,@typescript-eslint/parser,@vladcos/eslint-config,@vladcos/prettier-config,@vladcos/tsconfig,alias-hq,babel-plugin-module-resolver,eslint-config-prettier,eslint-import-resolver-node,eslint-import-resolver-typescript,eslint-plugin-import,eslint,jsii-diff,jsii-pacmak,npm-check-updates,packemon,prettier,standard-version,ts-node,tsconfig-paths,tsx,typescript,@types/lodash,app-root-path,lodash,type-fest"
+          "exec": "npm-check-updates --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=@bleed-believer/path-alias,@swc/core,@types/node,@typescript-eslint/eslint-plugin,@typescript-eslint/parser,@vladcos/eslint-config,@vladcos/prettier-config,@vladcos/tsconfig,alias-hq,babel-plugin-module-resolver,eslint-config-prettier,eslint-import-resolver-node,eslint-import-resolver-typescript,eslint-plugin-import,eslint,jsii-diff,jsii-pacmak,npm-check-updates,packemon,prettier,standard-version,ts-node,tsconfig-paths,tsx,typescript,@types/lodash,app-root-path,lodash,type-fest"
         },
         {
           "exec": "npm install"
