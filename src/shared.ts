@@ -67,7 +67,7 @@ export function preSynthesize(project: JsiiProject | TypeScriptProject): void {
   const version = 'projen@0.72.19'
   project.addDevDeps(version)
 
-  if (!('vitest' in project)) {
+  if (!('packemon' in project)) {
     project.addPeerDeps(version)
   }
 
