@@ -66,7 +66,11 @@ export function preSynthesize(project: JsiiProject | TypeScriptProject): void {
   project.testTask.reset()
   const version = 'projen@0.72.19'
   project.addDevDeps(version)
-  // project.addPeerDeps(version)
+
+  if (!('vitest' in project)) {
+    project.addPeerDeps(version)
+  }
+
   project.npmrc.addConfig('install-links', 'false')
   project.addDevDeps('@vladcos/tsconfig')
   project.package.addDevDeps(
