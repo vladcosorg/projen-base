@@ -65,7 +65,6 @@
     "@types/lodash": "^4.14.198",
     "app-root-path": "^3.1.0",
     "lodash": "^4.17.21",
-    "projen": "^0.73.9",
     "type-fest": "^0.21.3"
   },
   "bundledDependencies": [
