@@ -16,6 +16,7 @@ import type {
   TypeScriptProjectOptions,
 } from './projects/typescript'
 import type { JsiiProject, JsiiProjectOptions } from 'projen/lib/cdk'
+import { DependencyType } from 'projen/lib/dependencies'
 
 export function getSharedOptions<
   T extends JsiiProjectOptions | TypeScriptProjectOptions,
@@ -104,7 +105,7 @@ export function preSynthesize(project: JsiiProject | TypeScriptProject): void {
   })
 
   if (project.prettier) {
-    project.addDevDeps('@vladcos/prettier-config@latest')
+    project.addDevDeps('prettier@3', '@vladcos/prettier-config@latest')
     project.package.addField('prettier', '@vladcos/prettier-config')
     project.tryRemoveFile('.prettierrc.json')
   }
@@ -119,6 +120,7 @@ export function preSynthesize(project: JsiiProject | TypeScriptProject): void {
 
   if (project.prettier && project.eslint) {
     project.deps.removeDependency('eslint-plugin-prettier')
+    project.deps.removeDependency('eslint-config-prettier')
     // @ts-expect-error
     project.eslint._plugins = project.eslint._plugins.filter(
       (item: string) => item !== 'prettier',
