@@ -1,3 +1,9 @@
 import { RootProject } from './src/projects/root-project'
 
-new RootProject().synth()
+const project = new (class extends RootProject {
+  override preSynthesize() {
+    super.preSynthesize()
+  }
+})({})
+
+project.synth()

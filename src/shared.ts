@@ -64,10 +64,10 @@ export function getSharedOptions<
 
 export function preSynthesize(project: JsiiProject | TypeScriptProject): void {
   project.testTask.reset()
-  project.addDevDeps('projen@0.73.9')
+  // project.addDevDeps('projen@0.73.9')
 
   if (!('packemon' in project)) {
-    project.addPeerDeps('projen@0.73.9')
+    project.addPeerDeps('projen@^0.73.9')
   }
 
   project.npmrc.addConfig('install-links', 'false')
