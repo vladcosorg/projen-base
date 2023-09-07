@@ -4,6 +4,7 @@ import * as path from 'node:path'
 
 import { omit } from 'lodash'
 import { github, javascript, JsonPatch } from 'projen'
+import { DependencyType } from 'projen/lib/dependencies'
 import { NpmAccess } from 'projen/lib/javascript'
 import { UpgradeDependenciesSchedule } from 'projen/lib/javascript/upgrade-dependencies'
 import { mergeTsconfigOptions } from 'projen/lib/typescript'
@@ -119,7 +120,10 @@ export function preSynthesize(project: JsiiProject | TypeScriptProject): void {
 
   if (project.prettier && project.eslint) {
     project.deps.removeDependency('eslint-plugin-prettier')
-    project.deps.removeDependency('eslint-config-prettier')
+    project.deps.removeDependency(
+      'eslint-config-prettier',
+      DependencyType.BUILD,
+    )
     // @ts-expect-error
     project.eslint._plugins = project.eslint._plugins.filter(
       (item: string) => item !== 'prettier',
