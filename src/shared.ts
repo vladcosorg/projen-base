@@ -69,16 +69,17 @@ export function preSynthesize(project: JsiiProject | TypeScriptProject): void {
 
   if (!('packemon' in project)) {
     project.addPeerDeps('projen')
+  } else if (project.packemon) {
+    project.package.addDevDeps(
+      'packemon@^3',
+      'alias-hq@^6',
+      'babel-plugin-module-resolver@^5',
+    )
   }
 
   project.npmrc.addConfig('install-links', 'false')
   project.addDevDeps('@vladcos/tsconfig@latest')
-  project.package.addDevDeps(
-    'packemon@^3',
-    'alias-hq@^6',
-    'tsconfig-paths@^4',
-    'tsx@^3',
-  )
+  project.package.addDevDeps('tsconfig-paths@^4', 'tsx@^3')
 
   project.defaultTask?.reset(
     `npx -y tsx -r tsconfig-paths/register .projenrc.ts`,
