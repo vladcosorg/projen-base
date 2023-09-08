@@ -33,7 +33,6 @@
     "organization": false
   },
   "devDependencies": {
-    "@swc/core": "^1.3.83",
     "@types/node": "^16",
     "@typescript-eslint/eslint-plugin": "^6",
     "@typescript-eslint/parser": "^6",

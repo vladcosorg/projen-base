@@ -43,7 +43,6 @@ export function getSharedOptions<
     buildWorkflow: true,
     prettier: true,
     pullRequestTemplate: false,
-    projenrcTsOptions: { swc: true },
     disableTsconfig: true,
     tsconfigDevFile: 'tsconfig.json',
     depsUpgradeOptions: {
