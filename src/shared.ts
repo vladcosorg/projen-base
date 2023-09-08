@@ -75,6 +75,20 @@ export function preSynthesize(project: JsiiProject | TypeScriptProject): void {
       'alias-hq@^6',
       'babel-plugin-module-resolver@^5',
     )
+    project.package.addField('packemon', {
+      format: 'lib',
+      platform: 'node',
+    })
+
+    new ScriptFile(project, './packemon.config.ts', {
+      sourcePath: path.resolve(
+        path.join(__dirname, '../templates/packemon.config.ts'),
+      ),
+      readonly: true,
+      marker: true,
+    })
+
+    project.compileTask.reset('packemon build --loadConfigs')
   }
 
   project.npmrc.addConfig('install-links', 'false')
@@ -84,26 +98,6 @@ export function preSynthesize(project: JsiiProject | TypeScriptProject): void {
   project.defaultTask?.reset(
     `npx -y tsx -r tsconfig-paths/register .projenrc.ts`,
   )
-  project.package.addField('packemon', {
-    format: 'lib',
-    platform: 'node',
-  })
-
-  if (
-    !project.name.startsWith('@vladcos/projen') &&
-    'packemon' in project &&
-    project.packemon
-  ) {
-    project.compileTask.reset('packemon build --loadConfigs')
-  }
-
-  new ScriptFile(project, './packemon.config.ts', {
-    sourcePath: path.resolve(
-      path.join(__dirname, '../templates/packemon.config.ts'),
-    ),
-    readonly: true,
-    marker: true,
-  })
 
   if (project.prettier) {
     project.addDevDeps('prettier@^3', '@vladcos/prettier-config@latest')
