@@ -4,6 +4,6 @@ export class CustomJsii extends RootProject {
   constructor(options: any = {}) {
     super(options)
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    this.addPeerDeps(`@vladcos/projen-base@^0.0.113`)
+    this.addPeerDeps(`@vladcos/projen-base`)
   }
 }

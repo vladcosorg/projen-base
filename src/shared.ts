@@ -68,7 +68,7 @@ export function preSynthesize(project: JsiiProject | TypeScriptProject): void {
   // project.addDevDeps('projen@0.73.9')
 
   if (!('packemon' in project)) {
-    project.addPeerDeps('projen@^0.73.9')
+    project.addPeerDeps('projen')
   }
 
   project.npmrc.addConfig('install-links', 'false')
