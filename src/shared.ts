@@ -48,6 +48,16 @@ export function getSharedOptions<
     depsUpgradeOptions: {
       workflowOptions: { schedule: UpgradeDependenciesSchedule.WEEKLY },
     },
+    tsconfig: mergeTsconfigOptions(
+      JSON.parse(
+        execOrUndefined(
+          'curl https://raw.githubusercontent.com/vladcosorg/tsconfig/main/src/tsconfig.json',
+          { cwd: '.' },
+        )!,
+      ),
+      { compilerOptions: { baseUrl: '.' } },
+      options.tsconfig ?? { compilerOptions: {} },
+    ),
     tsconfigDev: mergeTsconfigOptions(
       JSON.parse(
         execOrUndefined(
@@ -58,7 +68,7 @@ export function getSharedOptions<
       { compilerOptions: { baseUrl: '.' } },
       options.tsconfigDev ?? { compilerOptions: {} },
     ),
-    ...omit(options, 'tsconfigDev'),
+    ...omit(options, 'tsconfigDev', 'tsconfig'),
   } satisfies Partial<TypeScriptProjectOptions> as T
 }
 
