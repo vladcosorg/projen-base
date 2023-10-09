@@ -41,10 +41,10 @@
     "@vladcos/tsconfig": "latest",
     "eslint": "^8",
     "eslint-import-resolver-node": "^0.3.9",
-    "eslint-import-resolver-typescript": "^3.6.0",
+    "eslint-import-resolver-typescript": "^3.6.1",
     "jsii": "~5.0.0",
-    "jsii-diff": "^1.88.0",
-    "jsii-pacmak": "^1.88.0",
+    "jsii-diff": "^1.90.0",
+    "jsii-pacmak": "^1.90.0",
     "jsii-rosetta": "~5.0.0",
     "npm-check-updates": "^16",
     "prettier": "^3",
@@ -56,10 +56,10 @@
     "typescript": "^5.2.2"
   },
   "peerDependencies": {
-    "projen": "^0.73.9"
+    "projen": "^0.74.6"
   },
   "dependencies": {
-    "@types/lodash": "^4.14.198",
+    "@types/lodash": "^4.14.199",
     "app-root-path": "^3.1.0",
     "lodash": "^4.17.21",
     "type-fest": "^0.21.3"
