@@ -36,7 +36,7 @@ export class RootProject extends cdk.JsiiProject {
       }),
     )
     this.upgradeWorkflow?.postUpgradeTask.exec(
-      'npm-check-updates --upgrade --target=minor --no-peer --dep=dev,peer,prod,optional --filter=projen',
+      'npx npm-check-updates --upgrade --target=minor --no-peer --dep=dev,peer,prod,optional --filter=projen',
     )
     this.upgradeWorkflow?.postUpgradeTask.exec('npx projen')
     this.upgradeWorkflow?.postUpgradeTask.exec('npm install')
