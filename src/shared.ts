@@ -102,7 +102,7 @@ export function preSynthesize(project: JsiiProject | TypeScriptProject): void {
 
   project.npmrc.addConfig('install-links', 'false')
   project.addDevDeps('@vladcos/tsconfig@latest')
-  project.package.addDevDeps('tsconfig-paths@^4', 'tsx@^3')
+  project.package.addDevDeps('tsconfig-paths@^4', 'tsx@^4')
 
   project.defaultTask?.reset(
     `npx -y tsx -r tsconfig-paths/register .projenrc.ts`,
