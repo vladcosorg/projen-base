@@ -18,6 +18,9 @@ export class RootProject extends cdk.JsiiProject {
           compilerOptions: {},
           include: ['templates/**/*.ts'],
         },
+        depsUpgradeOptions: {
+          satisfyPeerDependencies: false,
+        },
         bundledDeps: [
           'lodash',
           '@types/lodash',
@@ -32,6 +35,12 @@ export class RootProject extends cdk.JsiiProject {
         ...options,
       }),
     )
+    this.upgradeWorkflow?.postUpgradeTask.exec(
+      'npm-check-updates --upgrade --target=minor --no-peer --dep=dev,peer,prod,optional --filter=projen',
+    )
+    this.upgradeWorkflow?.postUpgradeTask.exec('npx projen')
+    this.upgradeWorkflow?.postUpgradeTask.exec('npm install')
+    this.upgradeWorkflow?.postUpgradeTask.exec('npm update projen')
   }
   override preSynthesize() {
     preSynthesize(this)
