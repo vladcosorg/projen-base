@@ -130,16 +130,15 @@ export function preSynthesize(project: JsiiProject | TypeScriptProject): void {
       DependencyType.BUILD,
     )
     // @ts-expect-error
-    project.eslint._plugins = project.eslint._plugins.filter(
-      (item: string) => item !== 'prettier',
-    )
+    project.eslint._plugins = project.eslint._plugins.delete('prettier')
 
     // @ts-expect-error ddd
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access
-    project.eslint._extends = project.eslint._extends.filter(
-      (item: string) =>
-        item !== 'prettier' && item !== 'plugin:prettier/recommended',
-    )
+    project.eslint._extends.delete('prettier')
+    // @ts-expect-error ddd
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access
+    project.eslint._extends.delete('plugin:prettier/recommended')
+
     // project.tasks.removeTask('eslint')
     const task = project.tasks.addTask('format')
     task.exec(
