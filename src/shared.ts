@@ -101,7 +101,7 @@ export function preSynthesize(project: JsiiProject | TypeScriptProject): void {
   }
 
   project.npmrc.addConfig('install-links', 'false')
-  project.addDevDeps('@vladcos/tsconfig@latest')
+  project.addDevDeps('@vladcos/tsconfig')
   project.package.addDevDeps('tsconfig-paths@^4', 'tsx@^4')
 
   project.defaultTask?.reset(
@@ -109,13 +109,13 @@ export function preSynthesize(project: JsiiProject | TypeScriptProject): void {
   )
 
   if (project.prettier) {
-    project.addDevDeps('prettier@^3', '@vladcos/prettier-config@latest')
+    project.addDevDeps('prettier@^3', '@vladcos/prettier-config')
     project.package.addField('prettier', '@vladcos/prettier-config')
     project.tryRemoveFile('.prettierrc.json')
   }
 
   if (project.eslint) {
-    project.addDevDeps('@vladcos/eslint-config@latest')
+    project.addDevDeps('@vladcos/eslint-config')
     project.deps.removeDependency('eslint-plugin-import', DependencyType.BUILD)
     project.eslint.addExtends('@vladcos/eslint-config')
     project

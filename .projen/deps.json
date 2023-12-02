@@ -17,17 +17,14 @@
     },
     {
       "name": "@vladcos/eslint-config",
-      "version": "latest",
       "type": "build"
     },
     {
       "name": "@vladcos/prettier-config",
-      "version": "latest",
       "type": "build"
     },
     {
       "name": "@vladcos/tsconfig",
-      "version": "latest",
       "type": "build"
     },
     {
