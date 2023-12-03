@@ -37,11 +37,13 @@ export class RootProject extends cdk.JsiiProject {
       }),
     )
     this.upgradeWorkflow?.postUpgradeTask.exec(
-      'npx npm-check-updates --upgrade --target=minor --no-peer --dep=dev,peer,prod,optional --filter=projen,projen-base',
+      'npx npm-check-updates --upgrade --target=minor --no-peer --dep=dev,peer,prod,optional --filter=projen,@vladcos/projen-base',
     )
-    this.upgradeWorkflow?.postUpgradeTask.exec('npm install')
-    this.upgradeWorkflow?.postUpgradeTask.exec('npm update projen')
+    this.upgradeWorkflow?.postUpgradeTask.exec(
+      'npm update projen @vladcos/projen-base',
+    )
     this.upgradeWorkflow?.postUpgradeTask.exec('npx projen')
+    this.upgradeWorkflow?.postUpgradeTask.exec('npm install')
   }
   override preSynthesize() {
     preSynthesize(this)
