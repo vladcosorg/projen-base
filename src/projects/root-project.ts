@@ -36,9 +36,10 @@ export class RootProject extends cdk.JsiiProject {
         ...options,
       }),
     )
-    this.upgradeWorkflow?.postUpgradeTask.exec(
-      'npx npm-check-updates --upgrade --target=minor --no-peer --dep=dev,peer,prod,optional --filter=projen,@vladcos/projen-base',
-    )
+    const cmd =
+      'npx npm-check-updates --upgrade --target=minor --no-peer --dep=dev,peer,prod,optional --filter=projen,@vladcos/projen-base'
+    this.upgradeWorkflow?.postUpgradeTask.exec(cmd)
+    this.upgradeWorkflow?.postUpgradeTask.exec(cmd)
     this.upgradeWorkflow?.postUpgradeTask.exec(
       'npm update projen @vladcos/projen-base',
     )
