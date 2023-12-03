@@ -23,7 +23,7 @@ export class Vitest extends Component {
 
   constructor(project: TypeScriptProject, options: VitestOptions = {}) {
     super(project)
-    project.package.addDevDeps('vitest@^1', 'vite-tsconfig-paths@4')
+    project.package.addDevDeps('vitest@v1.0.0-beta.6', 'vite-tsconfig-paths@4')
 
     project.tsconfigDev.addInclude('vitest.config.ts')
     project.tsconfigDev.addInclude('tests/**/*.ts')
