@@ -47,7 +47,7 @@
     "jsii-pacmak": "^1.93.0",
     "jsii-rosetta": "~5.0.0",
     "prettier": "^3",
-    "projen": "0.78.2",
+    "projen": "0.78.4",
     "standard-version": "^9",
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^4",
@@ -55,13 +55,13 @@
     "typescript": "^5.3.3"
   },
   "peerDependencies": {
-    "projen": "^0.78.2"
+    "projen": "^0.78.4"
   },
   "dependencies": {
     "@types/lodash": "^4.14.202",
     "app-root-path": "^3.1.0",
     "lodash": "^4.17.21",
-    "type-fest": "^4.8.3"
+    "type-fest": "^4.9.0"
   },
   "bundledDependencies": [
     "@types/lodash",
