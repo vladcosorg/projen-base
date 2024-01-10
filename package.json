@@ -43,11 +43,11 @@
     "eslint": "^8",
     "eslint-import-resolver-typescript": "^3.6.1",
     "jsii": "~5.0.0",
-    "jsii-diff": "^1.93.0",
-    "jsii-pacmak": "^1.93.0",
+    "jsii-diff": "^1.94.0",
+    "jsii-pacmak": "^1.94.0",
     "jsii-rosetta": "~5.0.0",
     "prettier": "^3",
-    "projen": "0.78.11",
+    "projen": "0.78.13",
     "standard-version": "^9",
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^4",
@@ -55,7 +55,7 @@
     "typescript": "^5.3.3"
   },
   "peerDependencies": {
-    "projen": "^0.78.11"
+    "projen": "^0.78.13"
   },
   "dependencies": {
     "@types/lodash": "^4.14.202",
