@@ -2,7 +2,7 @@
   "name": "@vladcos/projen-base",
   "repository": {
     "type": "git",
-    "url": "https://github.com/chetzof/projen-base"
+    "url": "https://github.com/@vladcos/projen-base"
   },
   "scripts": {
     "build": "npx projen build",
