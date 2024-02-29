@@ -13,7 +13,7 @@ export class RootProject extends cdk.JsiiProject {
         authorAddress: 'vcosvic@gmail.com',
         jsiiVersion: '~5.0.0',
         name: '@vladcos/projen-base',
-        repositoryUrl: 'https://github.com/@vladcos/projen-base',
+        repositoryUrl: 'https://github.com/@vladcosorg/projen-base',
         tsconfigDev: {
           compilerOptions: {},
           include: ['templates/**/*.ts'],
