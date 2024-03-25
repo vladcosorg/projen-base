@@ -36,8 +36,8 @@
     "@types/node": "^18",
     "@typescript-eslint/eslint-plugin": "^6",
     "@typescript-eslint/parser": "^6",
-    "@vladcos/eslint-config": "^0.0.39",
-    "@vladcos/prettier-config": "^0.0.36",
+    "@vladcos/eslint-config": "^0.0.40",
+    "@vladcos/prettier-config": "^0.0.37",
     "@vladcos/tsconfig": "^0.0.25",
     "constructs": "^10.0.0",
     "eslint": "^8",
@@ -61,7 +61,7 @@
     "@types/lodash": "^4.17.0",
     "app-root-path": "^3.1.0",
     "lodash": "^4.17.21",
-    "type-fest": "^4.13.1"
+    "type-fest": "^4.14.0"
   },
   "bundledDependencies": [
     "@types/lodash",
