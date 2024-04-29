@@ -36,8 +36,8 @@
     "@types/node": "^18",
     "@typescript-eslint/eslint-plugin": "^6",
     "@typescript-eslint/parser": "^6",
-    "@vladcos/eslint-config": "^0.0.46",
-    "@vladcos/prettier-config": "^0.0.41",
+    "@vladcos/eslint-config": "^0.0.47",
+    "@vladcos/prettier-config": "^0.0.42",
     "@vladcos/tsconfig": "^0.0.25",
     "constructs": "^10.0.0",
     "eslint": "^8",
@@ -47,7 +47,7 @@
     "jsii-pacmak": "^1.97.0",
     "jsii-rosetta": "~5.0.0",
     "prettier": "^3",
-    "projen": "0.81.3",
+    "projen": "0.81.4",
     "standard-version": "^9",
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^4",
@@ -55,7 +55,7 @@
     "typescript": "^5.4.5"
   },
   "peerDependencies": {
-    "projen": "^0.81.3"
+    "projen": "^0.81.4"
   },
   "dependencies": {
     "@types/lodash": "^4.17.0",
