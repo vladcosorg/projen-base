@@ -11,7 +11,7 @@ export class RootProject extends cdk.JsiiProject {
         tsconfigDevFile: 'tsconfig.dev.json',
         author: 'Vlad Cos',
         authorAddress: 'vcosvic@gmail.com',
-        jsiiVersion: '~5.0.0',
+        jsiiVersion: '~5.4.0',
         name: '@vladcos/projen-base',
         repositoryUrl: 'https://github.com/vladcosorg/projen-base',
         tsconfigDev: {
