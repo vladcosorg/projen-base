@@ -12,6 +12,7 @@ export class RootProject extends cdk.JsiiProject {
         author: 'Vlad Cos',
         authorAddress: 'vcosvic@gmail.com',
         jsiiVersion: '~5.4.0',
+        minNodeVersion: '20.0.0',
         name: '@vladcos/projen-base',
         repositoryUrl: 'https://github.com/vladcosorg/projen-base',
         tsconfigDev: {
