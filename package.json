@@ -58,10 +58,10 @@
     "projen": "^0.84.4"
   },
   "dependencies": {
-    "@types/lodash": "^4.17.6",
+    "@types/lodash": "^4.17.7",
     "app-root-path": "^3.1.0",
     "lodash": "^4.17.21",
-    "type-fest": "^4.21.0"
+    "type-fest": "^4.22.0"
   },
   "bundledDependencies": [
     "@types/lodash",
