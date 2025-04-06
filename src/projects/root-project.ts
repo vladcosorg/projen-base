@@ -1,33 +1,33 @@
-import { cdk } from 'projen'
+import { cdk } from "projen";
 
-import { preSynthesize, postSynthesize, getSharedOptions } from '../shared'
+import { preSynthesize, postSynthesize, getSharedOptions } from "../shared";
 
 export class RootProject extends cdk.JsiiProject {
   constructor(options: any = {}) {
     super(
       getSharedOptions({
-        defaultReleaseBranch: 'main',
+        defaultReleaseBranch: "main",
         disableTsconfig: true,
-        tsconfigDevFile: 'tsconfig.dev.json',
-        author: 'Vlad Cos',
-        authorAddress: 'vcosvic@gmail.com',
-        jsiiVersion: '~5.4.0',
-        minNodeVersion: '20.0.0',
-        name: '@vladcos/projen-base',
-        repositoryUrl: 'https://github.com/vladcosorg/projen-base',
+        tsconfigDevFile: "tsconfig.dev.json",
+        author: "Vlad Cos",
+        authorAddress: "vcosvic@gmail.com",
+        jsiiVersion: "~5.6.0",
+        minNodeVersion: "22.0.0",
+        name: "@vladcos/projen-base",
+        repositoryUrl: "https://github.com/vladcosorg/projen-base",
         tsconfigDev: {
           compilerOptions: {},
-          include: ['templates/**/*.ts'],
+          include: ["templates/**/*.ts"],
         },
         depsUpgradeOptions: {
           satisfyPeerDependencies: false,
-          exclude: ['@vladcos/projen-base', 'projen'],
+          exclude: ["@vladcos/projen-base", "projen"],
         },
         bundledDeps: [
-          'lodash',
-          '@types/lodash',
-          'type-fest',
-          'app-root-path',
+          "lodash",
+          "@types/lodash",
+          "type-fest",
+          "app-root-path",
           // 'zod-to-json-schema',
           // 'zod',
           // 'replace-in-file',
@@ -36,24 +36,24 @@ export class RootProject extends cdk.JsiiProject {
         // deps: ['projen@^0.73.9'],
         ...options,
       }),
-    )
+    );
     const cmd =
-      'npx npm-check-updates --upgrade --target=minor --no-peer --dep=dev,peer,prod,optional --filter=projen,@vladcos/projen-base'
-    this.upgradeWorkflow?.postUpgradeTask.exec(cmd)
-    this.upgradeWorkflow?.postUpgradeTask.exec(cmd)
+      "npx npm-check-updates --upgrade --target=minor --no-peer --dep=dev,peer,prod,optional --filter=projen,@vladcos/projen-base";
+    this.upgradeWorkflow?.postUpgradeTask.exec(cmd);
+    this.upgradeWorkflow?.postUpgradeTask.exec(cmd);
     this.upgradeWorkflow?.postUpgradeTask.exec(
-      'npm update projen @vladcos/projen-base',
-    )
-    this.upgradeWorkflow?.postUpgradeTask.exec('npx projen')
-    this.upgradeWorkflow?.postUpgradeTask.exec('npm install')
+      "npm update projen @vladcos/projen-base",
+    );
+    this.upgradeWorkflow?.postUpgradeTask.exec("npx projen");
+    this.upgradeWorkflow?.postUpgradeTask.exec("npm install");
   }
   override preSynthesize() {
-    preSynthesize(this)
-    super.preSynthesize()
+    preSynthesize(this);
+    super.preSynthesize();
   }
 
   override postSynthesize() {
-    super.postSynthesize()
-    postSynthesize(this)
+    super.postSynthesize();
+    postSynthesize(this);
   }
 }

@@ -4,19 +4,18 @@ import * as path from 'node:path'
 
 import { omit } from 'lodash'
 import { github, javascript, JsonPatch } from 'projen'
+import type { JsiiProject, JsiiProjectOptions } from 'projen/lib/cdk'
 import { DependencyType } from 'projen/lib/dependencies'
 import { NpmAccess } from 'projen/lib/javascript'
 import { UpgradeDependenciesSchedule } from 'projen/lib/javascript/upgrade-dependencies'
 import { mergeTsconfigOptions } from 'projen/lib/typescript'
 import { execOrUndefined } from 'projen/lib/util'
 
-import { ScriptFile } from './script-file'
-
 import type {
   TypeScriptProject,
   TypeScriptProjectOptions,
 } from './projects/typescript'
-import type { JsiiProject, JsiiProjectOptions } from 'projen/lib/cdk'
+import { ScriptFile } from './script-file'
 
 export function getSharedOptions<
   T extends JsiiProjectOptions | TypeScriptProjectOptions,
@@ -114,7 +113,7 @@ export function preSynthesize(project: JsiiProject | TypeScriptProject): void {
     project.tryRemoveFile('.prettierrc.json')
   }
 
-  if (project.eslint) {
+  if (project.eslint && false) {
     project.addDevDeps('@vladcos/eslint-config')
     project.deps.removeDependency('eslint-plugin-import', DependencyType.BUILD)
     project.eslint.addExtends('@vladcos/eslint-config')
