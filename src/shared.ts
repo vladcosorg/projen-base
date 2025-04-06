@@ -116,7 +116,7 @@ export function preSynthesize(project: JsiiProject | TypeScriptProject): void {
   if (project.eslint && false) {
     project.addDevDeps('@vladcos/eslint-config')
     project.deps.removeDependency('eslint-plugin-import', DependencyType.BUILD)
-    project.eslint.addExtends('@vladcos/eslint-config')
+    project.eslint?.addExtends('@vladcos/eslint-config')
     project
       .tryFindObjectFile('.eslintrc.json')
       ?.patch(JsonPatch.replace('/rules', {}))
