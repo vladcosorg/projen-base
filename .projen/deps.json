@@ -16,6 +16,10 @@
       "type": "build"
     },
     {
+      "name": "@vladcos/eslint-config",
+      "type": "build"
+    },
+    {
       "name": "@vladcos/prettier-config",
       "type": "build"
     },
@@ -35,10 +39,6 @@
     },
     {
       "name": "eslint-import-resolver-typescript",
-      "type": "build"
-    },
-    {
-      "name": "eslint-plugin-import",
       "type": "build"
     },
     {

@@ -113,7 +113,7 @@ export function preSynthesize(project: JsiiProject | TypeScriptProject): void {
     project.tryRemoveFile('.prettierrc.json')
   }
 
-  if (project.eslint && false) {
+  if (project.eslint) {
     project.addDevDeps('@vladcos/eslint-config')
     project.deps.removeDependency('eslint-plugin-import', DependencyType.BUILD)
     project.eslint?.addExtends('@vladcos/eslint-config')
@@ -140,6 +140,9 @@ export function preSynthesize(project: JsiiProject | TypeScriptProject): void {
 
     // project.tasks.removeTask('eslint')
     const task = project.tasks.addTask('format')
+    project.prettier.ignoreFile?.addPatterns(
+      ...project.files.map((file) => file.path),
+    )
     task.exec(
       'prettier --write --cache --no-error-on-unmatched-pattern --ignore-unknown . || true',
     )

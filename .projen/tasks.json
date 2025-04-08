@@ -269,13 +269,13 @@
       },
       "steps": [
         {
-          "exec": "npx npm-check-updates@16 --upgrade --target=minor --no-peer --no-deprecated --dep=dev,peer,prod,optional --filter=@vladcos/prettier-config,@vladcos/tsconfig,eslint-import-resolver-typescript,eslint-plugin-import,jsii-diff,jsii-pacmak,ts-node,typescript,@types/lodash,app-root-path,lodash,type-fest"
+          "exec": "npx npm-check-updates@16 --upgrade --target=minor --no-peer --no-deprecated --dep=dev,peer,prod,optional --filter=@vladcos/eslint-config,@vladcos/prettier-config,@vladcos/tsconfig,eslint-import-resolver-typescript,jsii-diff,jsii-pacmak,ts-node,typescript,@types/lodash,app-root-path,lodash,type-fest"
         },
         {
           "exec": "npm install"
         },
         {
-          "exec": "npm update @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser @vladcos/prettier-config @vladcos/tsconfig commit-and-tag-version constructs eslint-import-resolver-typescript eslint-plugin-import eslint jsii-diff jsii-pacmak jsii-rosetta jsii prettier ts-node tsconfig-paths tsx typescript @types/lodash app-root-path lodash type-fest"
+          "exec": "npm update @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser @vladcos/eslint-config @vladcos/prettier-config @vladcos/tsconfig commit-and-tag-version constructs eslint-import-resolver-typescript eslint jsii-diff jsii-pacmak jsii-rosetta jsii prettier ts-node tsconfig-paths tsx typescript @types/lodash app-root-path lodash type-fest"
         },
         {
           "exec": "npx projen"
