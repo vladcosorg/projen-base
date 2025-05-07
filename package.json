@@ -48,20 +48,20 @@
     "jsii-pacmak": "^1.111.0",
     "jsii-rosetta": "~5.6.0",
     "prettier": "^3",
-    "projen": "0.91.29",
+    "projen": "0.91.30",
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^4",
     "tsx": "^4",
     "typescript": "^5.8.3"
   },
   "peerDependencies": {
-    "projen": "^0.91.29"
+    "projen": "^0.91.30"
   },
   "dependencies": {
     "@types/lodash": "^4.17.16",
     "app-root-path": "^3.1.0",
     "lodash": "^4.17.21",
-    "type-fest": "^4.40.1"
+    "type-fest": "^4.41.0"
   },
   "bundledDependencies": [
     "@types/lodash",
