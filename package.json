@@ -36,7 +36,7 @@
     "@types/node": "^22",
     "@typescript-eslint/eslint-plugin": "^8",
     "@typescript-eslint/parser": "^8",
-    "@vladcos/eslint-config": "^0.0.74",
+    "@vladcos/eslint-config": "^0.0.75",
     "@vladcos/prettier-config": "^0.0.60",
     "@vladcos/tsconfig": "^0.0.25",
     "commit-and-tag-version": "^12",
